@@ -1,6 +1,6 @@
 /* MisterTred — service worker: ilova qobig'i oflayn ochiladi, narxlar esa doim internetdan olinadi. */
-var CACHE = "mt-shell-v3";
-var SHELL = ["./", "./index.html", "./manifest.webmanifest", "./icon-180.png", "./icon-192.png", "./icon-512.png"];
+var CACHE = "mt-shell-v4";
+var SHELL = ["./", "./index.html", "./manifest.webmanifest", "./vendor/lightweight-charts.standalone.production.js", "./icon-180.png", "./icon-192.png", "./icon-512.png"];
 
 self.addEventListener("install", function (e) {
   e.waitUntil(caches.open(CACHE).then(function (c) { return c.addAll(SHELL); }).then(function () { return self.skipWaiting(); }));
