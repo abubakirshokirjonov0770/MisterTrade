@@ -1,5 +1,5 @@
 /* MisterTred — service worker: ilova qobig'i oflayn ochiladi, narxlar esa doim internetdan olinadi. */
-var CACHE = "mt-shell-v2";
+var CACHE = "mt-shell-v3";
 var SHELL = ["./", "./index.html", "./manifest.webmanifest", "./icon-180.png", "./icon-192.png", "./icon-512.png"];
 
 self.addEventListener("install", function (e) {
