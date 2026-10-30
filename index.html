@@ -108,6 +108,14 @@ canvas.chart { width: 100%; height: 260px; display: block; touch-action: pan-y; 
 .mtf-row .meta { grid-column: 2 / -1; font-size: 12px; color: var(--muted); font-family: var(--f-mono); }
 .consensus { display: flex; justify-content: space-between; align-items: center; gap: 10px; background: var(--surface-2); border-radius: 10px; padding: 8px 10px; font-size: 14px; }
 svg.equity { width: 100%; height: 70px; display: block; }
+.tg-post { display: grid; gap: 6px; padding: 10px 0; border-top: 1px solid var(--line); }
+.tg-post:first-of-type { border-top: 0; }
+.tg-head { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.tg-text { font-size: 13px; color: var(--muted); white-space: pre-wrap; overflow-wrap: anywhere; max-height: 4.5em; overflow: hidden; }
+.tg-text.open { max-height: none; }
+.tg-chan { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 8px 0; border-top: 1px solid var(--line); font-size: 14px; }
+.tg-chan:first-child { border-top: 0; }
+.toast { position: fixed; left: 50%; top: calc(env(safe-area-inset-top, 0px) + 10px); transform: translateX(-50%); z-index: 20; width: min(528px, calc(100% - 32px)); background: var(--ink); color: var(--bg); border-radius: 12px; padding: 12px 14px; font-size: 14px; box-shadow: 0 6px 24px rgba(0,0,0,.25); border: 0; text-align: left; }
 .legend { display: flex; gap: 12px; flex-wrap: wrap; font-size: 12px; color: var(--muted); }
 .legend span::before { content: ""; display: inline-block; width: 14px; height: 3px; border-radius: 2px; margin-right: 5px; vertical-align: middle; background: var(--c); }
 
@@ -206,6 +214,9 @@ ol.steps { margin: 0; padding-left: 20px; display: grid; gap: 6px; font-size: 14
       <div class="row"><button class="btn sm" id="watchRefresh">Hozir tekshirish</button><span class="small muted" id="watchStamp"></span></div>
     </div>
     <div class="card" id="watchList"></div>
+    <div class="h2">Telegram signallari</div>
+    <p class="muted small" style="margin:0">Sozlamalarda qo'shilgan kanallarda yangi signal chiqsa, shu yerda ko'rinadi va ilova ovoz/bildirishnoma bilan xabar beradi.</p>
+    <div class="card" id="tgFeed"></div>
     <div class="h2">Signallar natijasi</div>
     <p class="muted small" style="margin:0">Har bir signal TP yoki SL ga yetguncha kuzatiladi. Bu ilovaning haqiqiy aniqligi shu yerda ko'rinadi.</p>
     <div class="card" id="journal"></div>
@@ -227,6 +238,23 @@ ol.steps { margin: 0; padding-left: 20px; display: grid; gap: 6px; font-size: 14
       </div>
       <button class="btn" id="saveSet">Saqlash</button>
       <div class="small muted" id="setMsg"></div>
+    </div>
+    <div class="card">
+      <div class="eyebrow">Telegram signal kanallari</div>
+      <p class="small muted" style="margin:0">Signal beradigan Telegram kanal havolasini qo'shing (masalan <span class="mono">https://t.me/kanal_nomi</span>). Kanalda yangi BUY/SELL (LONG/SHORT) signal chiqishi bilan ilova xabar beradi: ovoz, titrash va bildirishnoma (Kuzatuv bo'limidagi sozlamalar bo'yicha).</p>
+      <form class="search" id="tgForm" autocomplete="off">
+        <input id="tgInput" placeholder="https://t.me/kanal_nomi yoki @kanal" aria-label="Telegram kanal havolasi" style="text-transform:none">
+        <button class="btn ghost" type="submit">Qo'shish</button>
+      </form>
+      <div id="tgChans"></div>
+      <div class="field"><label for="tgEvery">Tekshirish oralig'i</label><select id="tgEvery"><option value="30">30 soniya</option><option value="60">1 daqiqa</option><option value="120">2 daqiqa</option><option value="300">5 daqiqa</option></select></div>
+      <div class="switch"><span>Faqat signal postlari haqida xabar berish (boshqa postlar e'tiborsiz)</span><input type="checkbox" id="tgOnlySig"></div>
+      <details class="small"><summary class="muted">Qo'shimcha: o'z proksi manzilingiz</summary>
+        <p class="muted" style="margin:6px 0">Telegram sahifasini brauzer to'g'ridan-to'g'ri o'qiy olmaydi, shuning uchun ochiq proksi xizmatlari ishlatiladi. Ular ishlamay qolsa, o'z proksingizni (masalan Cloudflare Worker, README'da yozilgan) shu yerga qo'ying. <span class="mono">{url}</span> o'rniga kanal manzili qo'yiladi.</p>
+        <input id="tgProxy" class="mono" placeholder="https://proksi.example.workers.dev/?url={url}" style="width:100%;height:40px;border-radius:10px;border:1px solid var(--line);background:var(--surface);padding:0 10px">
+      </details>
+      <div class="row"><button class="btn sm" id="tgCheck" type="button">Hozir tekshirish</button><span class="small muted" id="tgStamp"></span></div>
+      <div class="note">Faqat <b>ochiq</b> kanallar ishlaydi (havolasi <span class="mono">t.me/nom</span> ko'rinishida). Yopiq kanallar (<span class="mono">t.me/+…</span>) va guruhlarni o'qib bo'lmaydi. Ilova yopiq bo'lsa tekshiruv to'xtaydi — signal o'tkazib yuborilmasligi uchun ilovani ochiq (yoki fonda) qoldiring.</div>
     </div>
     <div class="card">
       <div class="eyebrow">Zaxira nusxa</div>
@@ -254,6 +282,7 @@ ol.steps { margin: 0; padding-left: 20px; display: grid; gap: 6px; font-size: 14
     </div>
   </section>
 </main>
+<button type="button" class="toast" id="toast" hidden></button>
 
 <nav class="tabbar" aria-label="Bo'limlar"><div class="tabbar-in" role="tablist">
   <button role="tab" data-tab="tahlil" aria-selected="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 19V9M10 19V5M16 19v-7M22 19H2"/></svg>Tahlil</button>
@@ -1185,11 +1214,13 @@ ol.steps { margin: 0; padding-left: 20px; display: grid; gap: 6px; font-size: 14
   var wstate = store.get("wstate", {});
   var journal = store.get("journal", []);
   function addWatch(sym) { if (watch.indexOf(sym) < 0) { watch.push(sym); store.set("watch", watch); renderWatch(); } }
-  function trackSignal(sym, tf, sig) {
-    if (journal.some(function (j) { return j.sym === sym && j.bar === sig.bar_time && j.side === sig.side; })) return;
-    journal.unshift({ id: Date.now() + sym, sym: sym, tf: tf, side: sig.side, entry: sig.entry, sl: sig.sl, tp: sig.tp, bar: sig.bar_time, created: Date.now(), status: "open", checked: 0 });
+  function trackSignal(sym, tf, sig, src) {
+    if (journal.some(function (j) { return j.sym === sym && j.bar === sig.bar_time && j.side === sig.side; })) return false;
+    journal.unshift({ id: Date.now() + sym, sym: sym, tf: tf, side: sig.side, entry: sig.entry, sl: sig.sl, tp: sig.tp, bar: sig.bar_time, created: Date.now(), status: "open", checked: 0, src: src || undefined });
     journal = journal.slice(0, 200); store.set("journal", journal); renderJournal();
+    return true;
   }
+  function jLabel(j) { return j.src ? "@" + j.src : C.TF_LABEL[j.tf]; }
   var audioCtx = null;
   function beep() {
     try {
@@ -1199,17 +1230,28 @@ ol.steps { margin: 0; padding-left: 20px; display: grid; gap: 6px; font-size: 14
       o.start(); o.stop(audioCtx.currentTime + 0.25);
     } catch (e) { /* ovoz yo'q */ }
   }
-  function alertSignal(list) {
-    if ($("#soundChk").checked) { beep(); if (navigator.vibrate) navigator.vibrate([200, 100, 200]); }
+  function buzz() { if ($("#soundChk").checked) { beep(); if (navigator.vibrate) navigator.vibrate([200, 100, 200]); } }
+  function notify(title, body, tag, sym) {
     if (!$("#notifChk").checked || !("Notification" in window) || Notification.permission !== "granted") return;
+    var opt = { body: body, tag: tag, icon: "icon-192.png", data: { sym: sym || "" } };
+    var shown = navigator.serviceWorker && navigator.serviceWorker.getRegistration
+      ? navigator.serviceWorker.getRegistration().then(function (reg) { if (!reg) throw 0; return reg.showNotification(title, opt); })
+      : Promise.reject();
+    shown.catch(function () { try { new Notification(title, opt); } catch (e) { /* bildirishnoma yo'q */ } });
+  }
+  var toastTimer = null;
+  function toast(text, onTap) {
+    var t = $("#toast"); t.textContent = text; t.hidden = false;
+    t.onclick = function () { t.hidden = true; if (onTap) onTap(); };
+    clearTimeout(toastTimer); toastTimer = setTimeout(function () { t.hidden = true; }, 9000);
+  }
+  function alertSignal(list) {
+    buzz();
     (list || []).forEach(function (x) {
-      var title = x.sym + " — " + x.sig.side + " signal (" + C.TF_LABEL[x.tf] + ")";
-      var opt = { body: "Kirish " + P(x.sig.entry) + " · SL " + P(x.sig.sl) + " · TP " + P(x.sig.tp) + " · kuch " + x.sig.score + "/6", tag: x.sym + x.sig.bar_time, icon: "icon-192.png", data: { sym: x.sym } };
-      var shown = navigator.serviceWorker && navigator.serviceWorker.getRegistration
-        ? navigator.serviceWorker.getRegistration().then(function (reg) { if (!reg) throw 0; return reg.showNotification(title, opt); })
-        : Promise.reject();
-      shown.catch(function () { try { new Notification(title, opt); } catch (e) { /* bildirishnoma yo'q */ } });
+      notify(x.sym + " — " + x.sig.side + " signal (" + C.TF_LABEL[x.tf] + ")",
+        "Kirish " + P(x.sig.entry) + " · SL " + P(x.sig.sl) + " · TP " + P(x.sig.tp) + " · kuch " + x.sig.score + "/6", x.sym + x.sig.bar_time, x.sym);
     });
+    if (list && list.length) toast("Yangi signal: " + list.map(function (x) { return x.sym + " " + x.sig.side; }).join(", "), function () { openAnalysis(list[0].sym, list[0].tf); });
   }
   var checking = false;
   function checkWatch() {
@@ -1286,10 +1328,182 @@ ol.steps { margin: 0; padding-left: 20px; display: grid; gap: 6px; font-size: 14
     else h += journal.slice(0, 30).map(function (j) {
       var st = j.status === "open" ? '<span class="pill wait">ochiq</span>' : j.status === "TP" ? '<span class="pill buy">TP ' + (j.r >= 0 ? "+" : "") + j.r.toFixed(1) + "R</span>" : j.status === "SL" ? '<span class="pill sell">SL ' + j.r.toFixed(1) + "R</span>" : '<span class="pill flat">muddati o\'tdi</span>';
       var d = new Date(j.created);
-      return '<div class="srow" style="cursor:default"><span class="sym">' + esc(j.sym) + " " + j.side + " · " + C.TF_LABEL[j.tf] + "</span>" + st +
+      return '<div class="srow" style="cursor:default"><span class="sym">' + esc(j.sym) + " " + j.side + " · " + esc(jLabel(j)) + "</span>" + st +
         '<span class="meta">' + d.getDate() + "." + (d.getMonth() + 1) + " " + hm(j.created) + " · kirish " + P(j.entry) + " · SL " + P(j.sl) + " · TP " + P(j.tp) + "</span></div>";
     }).join("");
     box.innerHTML = h;
+  }
+
+  // ================================================================== TELEGRAM signal kanallari
+  // Ochiq kanalning veb-ko'rinishi (t.me/s/nom) o'qiladi. Telegram CORS ruxsat bermagani uchun proksi orqali.
+  var TG_PROXIES = [
+    function (u) { return u; },
+    function (u) { return "https://corsproxy.io/?url=" + encodeURIComponent(u); },
+    function (u) { return "https://api.allorigins.win/raw?url=" + encodeURIComponent(u); },
+    function (u) { return "https://api.codetabs.com/v1/proxy?quest=" + encodeURIComponent(u); }
+  ];
+  var tg = Object.assign({ chans: [], every: 60, onlySig: true, proxy: "", px: 1 }, store.get("tg", {}));
+  var tgFeed = store.get("tgfeed", []);
+  function tgSave() { store.set("tg", tg); }
+  function tgName(raw) {
+    var r = String(raw || "").trim();
+    if (/t\.me\/(\+|joinchat)/i.test(r)) return { err: "Bu yopiq kanal havolasi (t.me/+…). Faqat ochiq kanallarni kuzatish mumkin." };
+    r = r.replace(/^https?:\/\//i, "").replace(/^(www\.)?(t|telegram)\.(me|dog)\//i, "").replace(/^s\//, "").replace(/^@/, "").split(/[/?#]/)[0];
+    if (!/^[A-Za-z][A-Za-z0-9_]{3,31}$/.test(r)) return { err: "Havola noto'g'ri. Masalan: https://t.me/kanal_nomi yoki @kanal_nomi" };
+    return { name: r };
+  }
+  function tgProxyList() {
+    var list = [];
+    if (tg.proxy) list.push(function (u) { return tg.proxy.indexOf("{url}") >= 0 ? tg.proxy.replace("{url}", encodeURIComponent(u)) : tg.proxy + encodeURIComponent(u); });
+    var order = [tg.px].concat(TG_PROXIES.map(function (_, k) { return k; }).filter(function (k) { return k !== tg.px; }));
+    order.forEach(function (k) { if (TG_PROXIES[k]) list.push({ k: k, f: TG_PROXIES[k] }); });
+    return list;
+  }
+  function tgFetch(name) {
+    var url = "https://t.me/s/" + name, list = tgProxyList(), n = 0;
+    function next() {
+      if (n >= list.length) return Promise.reject(new Error("proxy"));
+      var it = list[n++], f = typeof it === "function" ? it : it.f;
+      var ctl = new AbortController(), t = setTimeout(function () { ctl.abort(); }, 12000);
+      return fetch(f(url), { signal: ctl.signal, cache: "no-store" }).then(function (r) {
+        if (!r.ok) throw new Error("HTTP " + r.status);
+        return r.text();
+      }).then(function (html) {
+        if (html.indexOf("tgme_") < 0) throw new Error("bad");
+        if (it.k !== undefined && it.k !== tg.px) { tg.px = it.k; tgSave(); }
+        return html;
+      }).catch(next).finally(function () { clearTimeout(t); });
+    }
+    return next();
+  }
+  function tgParsePage(html, name) {
+    var doc = new DOMParser().parseFromString(html, "text/html"), out = [];
+    doc.querySelectorAll(".tgme_widget_message[data-post]").forEach(function (m) {
+      var id = +String(m.getAttribute("data-post")).split("/")[1], te = m.querySelector(".tgme_widget_message_text"), tm = m.querySelector("time[datetime]");
+      if (!id || !te) return;
+      te.querySelectorAll("br").forEach(function (b) { b.replaceWith("\n"); });
+      out.push({ ch: name, id: id, text: te.textContent.trim(), t: tm ? Date.parse(tm.getAttribute("datetime")) : Date.now() });
+    });
+    var title = doc.querySelector(".tgme_channel_info_header_title");
+    return { posts: out, title: title ? title.textContent.trim() : "" };
+  }
+  // Raqam: "64,250.5" / "64 250,5" / "0.000123"
+  function tgNum(x) {
+    x = String(x).replace(/\s/g, "");
+    if (/,\d{3}(\D|$)/.test(x) && x.indexOf(".") >= 0) x = x.replace(/,/g, "");
+    else if (/^[1-9]\d{0,2}(,\d{3})+$/.test(x)) x = x.replace(/,/g, "");
+    else x = x.replace(",", ".");
+    var v = parseFloat(x); return isFinite(v) && v > 0 ? v : null;
+  }
+  var NUM = "(\\d[\\d.,]*\\d|\\d)";
+  function tgFind(text, re) { var m = re.exec(text); return m ? tgNum(m[m.length - 1]) : null; }
+  function tgParseSignal(text) {
+    var t = text.replace(/[ ]/g, " "), up = t.toUpperCase();
+    var side = null;
+    var reB = /\b(BUY|LONG)\b|ЛОНГ|ПОКУПК|КУПИТЬ|SOTIB\s*OL/i, reS = /\b(SELL|SHORT)\b|ШОРТ|ПРОДАЖ|ПРОДАТЬ|SOTISH|SOTING/i;
+    var pb = t.search(reB), ps = t.search(reS);
+    if (pb >= 0 || ps >= 0) side = ps < 0 || (pb >= 0 && pb < ps) ? "BUY" : "SELL"; // birinchi tilga olingan tomon
+    var sym = null, m;
+    if ((m = /#?\b([A-Z][A-Z0-9]{1,11})\s*[\/\-]?\s*(USDT|USDC|USD|PERP)\b/.exec(up))) sym = m[1] + (m[2] === "USDC" ? "USDC" : "USDT");
+    else if (/\b(XAU|GOLD|ЗОЛОТО|OLTIN)\b/.test(up)) sym = "GOLD";
+    else {
+      var tags = up.match(/#[A-Z][A-Z0-9]{1,11}\b/g) || [];
+      for (var q = 0; q < tags.length && !sym; q++) if (!/^#(SIGNALS?|CRYPTO|VIP|FREE|LONG|SHORT|BUY|SELL|FUTURES|SPOT|TRADING|TRADE|SCALP|NEWS|UPDATE)$/.test(tags[q])) sym = tags[q].slice(1);
+      var words = up.match(/[A-Z][A-Z0-9]{1,11}/g) || [];
+      for (var w = 0; w < words.length && !sym; w++) if (ALIASES[words[w]] && ALIASES[words[w]] !== "SILVER") sym = words[w];
+    }
+    if (sym === "XAUUSDT" || sym === "XAUUSD") sym = "GOLD";
+    var entry = tgFind(t, new RegExp("(?:entry|enter|kirish|вход|buy\\s*zone|sell\\s*zone|open|цена\\s*входа|@)\\s*(?:zone|price|narx[i]?)?\\s*[:=\\-–]?\\s*\\$?" + NUM, "i"));
+    if (entry === null) entry = tgFind(t, new RegExp("\\b(?:buy|sell|long|short)\\s*(?:zone|at|from)?\\s*[:=@\\-–]?\\s*\\$?" + NUM, "i"));
+    var sl = tgFind(t, new RegExp("(?:\\bsl\\b|stop[\\s\\-]*loss|\\bstop\\b|стоп[\\s\\-]*лосс|стоп|zarar)\\s*[:=\\-–]?\\s*\\$?" + NUM, "i"));
+    var tps = [], re = new RegExp("(?:\\btp\\s*(?:\\d(?!\\d))?|take[\\s\\-]*profit\\s*(?:\\d(?!\\d))?|target\\s*(?:\\d(?!\\d))?|тейк[\\s\\-]*профит\\s*(?:\\d(?!\\d))?|тейк\\s*(?:\\d(?!\\d))?|цель\\s*(?:\\d(?!\\d))?|maqsad\\s*(?:\\d(?!\\d))?)\\s*[:=\\-–)]?\\s*\\$?" + NUM, "gi");
+    while ((m = re.exec(t)) && tps.length < 6) { var v = tgNum(m[1]); if (v) tps.push(v); }
+    var isSig = !!side && (!!sym || sl !== null || tps.length > 0) && (sl !== null || tps.length > 0 || entry !== null);
+    var ok = isSig && entry && sl && tps.length && (side === "BUY" ? sl < entry && tps[0] > entry : sl > entry && tps[0] < entry);
+    return { isSig: isSig, side: side, sym: sym, entry: entry, sl: sl, tps: tps, consistent: !!ok };
+  }
+  var tgBusy = false, tgTimer = null;
+  function tgCheck(manual) {
+    if (tgBusy || !tg.chans.length) { if (manual && !tg.chans.length) $("#tgStamp").textContent = "Avval kanal qo'shing."; return Promise.resolve(); }
+    tgBusy = true; $("#tgStamp").textContent = "tekshirilmoqda…";
+    var fresh = [], fails = 0;
+    return tg.chans.reduce(function (p, ch) {
+      return p.then(function () {
+        return tgFetch(ch.name).then(function (html) {
+          var pg = tgParsePage(html, ch.name);
+          if (pg.title) ch.title = pg.title;
+          ch.ok = true; ch.at = Date.now();
+          var first = !ch.last;
+          pg.posts.forEach(function (po) {
+            if (po.id <= (ch.last || 0)) return;
+            var sg = tgParseSignal(po.text);
+            if (tg.onlySig && !sg.isSig) return;
+            if (tgFeed.some(function (f) { return f.ch === po.ch && f.id === po.id; })) return;
+            var item = Object.assign(po, { sg: sg, seen: first });
+            tgFeed.unshift(item);
+            if (!first) fresh.push(item);
+          });
+          pg.posts.forEach(function (po) { if (po.id > (ch.last || 0)) ch.last = po.id; });
+          if (!pg.posts.length) ch.ok = false;
+        }, function () { ch.ok = false; fails++; });
+      });
+    }, Promise.resolve()).then(function () {
+      tgFeed.sort(function (a, b) { return b.t - a.t; });
+      tgFeed = tgFeed.slice(0, 100);
+      store.set("tgfeed", tgFeed); tgSave(); renderTgChans(); renderTgFeed();
+      $("#tgStamp").textContent = fails === tg.chans.length ? "Kanallarni o'qib bo'lmadi (proksi ishlamayapti yoki internet yo'q)" : "oxirgi tekshiruv " + hm(Date.now());
+      if (fresh.length) tgAlert(fresh);
+    }).finally(function () { tgBusy = false; });
+  }
+  function tgSigLine(sg) {
+    if (!sg || !sg.isSig) return "";
+    return [sg.sym ? baseAsset(String(sg.sym).replace(/^GOLD$/, "XAU")) : "", sg.entry ? "kirish " + P(sg.entry) : "", sg.sl ? "SL " + P(sg.sl) : "", sg.tps.length ? "TP " + sg.tps.map(P).join(" / ") : ""].filter(Boolean).join(" · ");
+  }
+  function tgAlert(list) {
+    buzz();
+    list.forEach(function (it) {
+      var sg = it.sg, head = "@" + it.ch + (sg.isSig ? " — " + (sg.sym ? sg.sym + " " : "") + sg.side + " signal" : " — yangi post");
+      notify(head, (tgSigLine(sg) || it.text).slice(0, 180), "tg" + it.ch + it.id, sg.sym || "");
+    });
+    var a = list[0];
+    toast("Telegram: @" + a.ch + " " + (a.sg.isSig ? (a.sg.sym || "") + " " + a.sg.side + " signal berdi" : "yangi post") + (list.length > 1 ? " (+" + (list.length - 1) + ")" : ""), function () { showTab("kuzatuv"); });
+  }
+  function tgSchedule() {
+    if (tgTimer) clearInterval(tgTimer);
+    tgTimer = tg.chans.length ? setInterval(function () { tgCheck(false); }, Math.max(30, +tg.every || 60) * 1000) : null;
+  }
+  function renderTgChans() {
+    var box = $("#tgChans");
+    if (!tg.chans.length) { box.innerHTML = '<div class="empty" style="padding:8px">Hali kanal qo\'shilmagan.</div>'; return; }
+    box.innerHTML = tg.chans.map(function (c) {
+      var st = c.ok === undefined ? '<span class="pill flat">tekshirilmagan</span>' : c.ok ? '<span class="pill buy">ishlayapti</span>' : '<span class="pill sell">o\'qib bo\'lmadi</span>';
+      return '<div class="tg-chan"><a href="https://t.me/' + esc(c.name) + '" target="_blank" rel="noopener" style="color:inherit;min-width:0;overflow-wrap:anywhere"><b>@' + esc(c.name) + "</b>" + (c.title ? '<br><span class="small muted">' + esc(c.title) + "</span>" : "") + "</a>" +
+        '<span class="row" style="gap:6px;flex-wrap:nowrap">' + st + '<button type="button" class="btn ghost sm" data-tgdel="' + esc(c.name) + '" aria-label="@' + esc(c.name) + ' ni o\'chirish" style="height:28px;padding:0 8px">✕</button></span></div>';
+    }).join("");
+  }
+  function renderTgFeed() {
+    var box = $("#tgFeed");
+    if (!tg.chans.length) { box.innerHTML = '<div class="empty">Kanal qo\'shilmagan. <b>Sozlama</b> bo\'limida Telegram kanal havolasini qo\'shing.</div>'; return; }
+    if (!tgFeed.length) { box.innerHTML = '<div class="empty">Hozircha signal yo\'q. Kanalda yangi signal chiqishi bilan shu yerda paydo bo\'ladi.</div>'; return; }
+    box.innerHTML = tgFeed.slice(0, 25).map(function (it, k) {
+      var sg = it.sg || {}, d = new Date(it.t);
+      var pill = sg.isSig ? '<span class="pill ' + (sg.side === "BUY" ? "buy" : "sell") + '">' + sg.side + "</span>" : '<span class="pill flat">post</span>';
+      var btns = '<a class="btn ghost sm" style="display:inline-flex;align-items:center;text-decoration:none" href="https://t.me/' + esc(it.ch) + "/" + it.id + '" target="_blank" rel="noopener">Kanalda</a>';
+      if (sg.sym) btns += '<button type="button" class="btn ghost sm" data-tgan="' + esc(sg.sym) + '">Ilova tahlili</button>';
+      if (sg.consistent && sg.sym) btns += '<button type="button" class="btn sm" data-tgtrack="' + k + '"' + (it.tracked ? " disabled" : "") + ">" + (it.tracked ? "Kuzatilmoqda ✓" : "Natijasini kuzatish") + "</button>";
+      return '<div class="tg-post"><div class="tg-head"><span><b>' + esc(sg.sym || "") + "</b> " + '<span class="small muted">@' + esc(it.ch) + " · " + d.getDate() + "." + (d.getMonth() + 1) + " " + hm(it.t) + "</span></span>" + pill + "</div>" +
+        (sg.isSig ? '<div class="mono small">' + esc(tgSigLine(sg)) + "</div>" : "") +
+        (sg.isSig && !sg.consistent && sg.entry && sg.sl ? '<div class="small" style="color:var(--wait)">Raqamlar to\'liq emas yoki bir-biriga mos emas — ehtiyot bo\'ling.</div>' : "") +
+        '<div class="tg-text" data-tgtext="1">' + esc(it.text) + "</div><div class=\"row\">" + btns + "</div></div>";
+    }).join("");
+  }
+  function tgTrack(k, btn) {
+    var it = tgFeed[k]; if (!it || !it.sg.consistent) return;
+    var sg = it.sg;
+    withSource(function (src) { return resolve(src, sg.sym); }).then(function (sym) {
+      trackSignal(sym, "15m", { side: sg.side, entry: sg.entry, sl: sg.sl, tp: sg.tps[0], bar_time: it.t }, it.ch);
+      it.tracked = true; store.set("tgfeed", tgFeed); renderTgFeed();
+    }, function () { btn.textContent = "Juft topilmadi"; btn.disabled = true; });
   }
 
   // ================================================================== interfeys
@@ -1305,7 +1519,7 @@ ol.steps { margin: 0; padding-left: 20px; display: grid; gap: 6px; font-size: 14
     document.querySelectorAll("section.tab").forEach(function (s) { s.hidden = s.id !== "tab-" + name; });
     document.querySelectorAll(".tabbar button").forEach(function (b) { b.setAttribute("aria-selected", String(b.getAttribute("data-tab") === name)); });
     window.scrollTo(0, 0);
-    if (name === "kuzatuv") { renderWatch(); renderJournal(); }
+    if (name === "kuzatuv") { renderWatch(); renderJournal(); renderTgFeed(); }
     if (name === "tahlil" && lastView) drawChart(lastView);
   }
   function openAnalysis(sym, tf) {
@@ -1383,7 +1597,7 @@ ol.steps { margin: 0; padding-left: 20px; display: grid; gap: 6px; font-size: 14
   $("#jCsv").onclick = function () {
     if (!journal.length) return;
     var rows = [["sana", "juft", "taymfreym", "tomon", "kirish", "sl", "tp", "holat", "chiqish", "R"]].concat(journal.map(function (j) {
-      return [new Date(j.created).toISOString(), j.sym, C.TF_LABEL[j.tf], j.side, j.entry, j.sl, j.tp, j.status, j.exit === undefined ? "" : j.exit, j.r === undefined ? "" : j.r.toFixed(3)];
+      return [new Date(j.created).toISOString(), j.sym, jLabel(j), j.side, j.entry, j.sl, j.tp, j.status, j.exit === undefined ? "" : j.exit, j.r === undefined ? "" : j.r.toFixed(3)];
     }));
     download("mistertred-signallar-" + stamp() + ".csv", rows.map(function (r) { return r.join(","); }).join("\n"), "text/csv");
   };
@@ -1393,7 +1607,7 @@ ol.steps { margin: 0; padding-left: 20px; display: grid; gap: 6px; font-size: 14
   };
 
   // ------------------------------------------------ zaxira nusxa
-  var BK_KEYS = ["settings", "watch", "wstate", "journal", "tf", "scanTf", "scanN", "auto", "sound", "notif", "last"];
+  var BK_KEYS = ["settings", "watch", "wstate", "journal", "tg", "tgfeed", "tf", "scanTf", "scanN", "auto", "sound", "notif", "last"];
   $("#bkExport").onclick = function () {
     var data = { app: "MisterTred", v: 1, saved: Date.now() };
     BK_KEYS.forEach(function (k) { var x = store.get(k, undefined); if (x !== undefined) data[k] = x; });
@@ -1429,6 +1643,36 @@ ol.steps { margin: 0; padding-left: 20px; display: grid; gap: 6px; font-size: 14
   $("#srcRetry").onclick = function () { srcIdx = 0; store.set("src", 0); for (var k in symCache) delete symCache[k]; withSource(function (src) { return symbols(src); }).catch(function () {}); };
   window.addEventListener("resize", function () { if (lastView && !$("#tab-tahlil").hidden) drawChart(lastView); });
   if (window.matchMedia) window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", function () { if (lastView) drawChart(lastView); });
+
+  // ------------------------------------------------ Telegram: interfeys
+  $("#tgEvery").value = String(tg.every); $("#tgOnlySig").checked = !!tg.onlySig; $("#tgProxy").value = tg.proxy || "";
+  $("#tgForm").onsubmit = function (e) {
+    e.preventDefault();
+    var r = tgName($("#tgInput").value);
+    if (r.err) { $("#tgStamp").textContent = r.err; return; }
+    if (tg.chans.some(function (c) { return c.name.toLowerCase() === r.name.toLowerCase(); })) { $("#tgStamp").textContent = "@" + r.name + " allaqachon qo'shilgan."; return; }
+    tg.chans.push({ name: r.name, last: 0 }); tgSave(); $("#tgInput").value = "";
+    renderTgChans(); tgSchedule(); tgCheck(true);
+  };
+  $("#tgChans").onclick = function (e) {
+    var d = e.target.closest("[data-tgdel]"); if (!d) return;
+    var n = d.getAttribute("data-tgdel");
+    tg.chans = tg.chans.filter(function (c) { return c.name !== n; });
+    tgFeed = tgFeed.filter(function (f) { return f.ch !== n; }); store.set("tgfeed", tgFeed);
+    tgSave(); renderTgChans(); renderTgFeed(); tgSchedule();
+  };
+  $("#tgEvery").onchange = function () { tg.every = +this.value; tgSave(); tgSchedule(); };
+  $("#tgOnlySig").onchange = function () { tg.onlySig = this.checked; tgSave(); };
+  $("#tgProxy").onchange = function () { var v = this.value.trim(); tg.proxy = /^https:\/\//.test(v) ? v : ""; this.value = tg.proxy; tgSave(); };
+  $("#tgCheck").onclick = function () { tgCheck(true); };
+  $("#tgFeed").onclick = function (e) {
+    var a = e.target.closest("[data-tgan]"); if (a) { openAnalysis(a.getAttribute("data-tgan")); return; }
+    var t = e.target.closest("[data-tgtrack]"); if (t) { tgTrack(+t.getAttribute("data-tgtrack"), t); return; }
+    var x = e.target.closest("[data-tgtext]"); if (x) x.classList.toggle("open");
+  };
+  document.addEventListener("visibilitychange", function () { if (document.visibilityState === "visible" && tg.chans.length) tgCheck(false); });
+  renderTgChans(); renderTgFeed(); tgSchedule();
+  if (tg.chans.length) setTimeout(function () { tgCheck(false); }, 1500);
 
   window.addEventListener("hashchange", function () { var h = decodeURIComponent((location.hash || "").slice(1)); if (h) openAnalysis(h); });
   if ("serviceWorker" in navigator && /^https?:$/.test(location.protocol) && !INFRAME) navigator.serviceWorker.register("sw.js").catch(function () { /* oflayn rejim bo'lmaydi */ });
