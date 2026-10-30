@@ -3,170 +3,260 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>MisterTred Mobil</title>
+<title>MisterTred</title>
 <meta name="description" content="Kripto juftlar tahlili: BUY / SELL / KUTING, barcha taymfreymlar, skaner va signallar.">
-<meta name="theme-color" content="#0E2A33">
+<meta name="theme-color" content="#F2F2F7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="format-detection" content="telephone=no">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src https:; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
 <meta name="apple-mobile-web-app-title" content="MisterTred">
 <link rel="apple-touch-icon" href="icon-180.png">
 <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAIAAAAlC+aJAAAJaUlEQVR42u1Za4xdVRVea+29zz33Ne92xkKL7ZS2oSRQHqViCtFCsQZQ3iYQAmIqookPkEf4gRpFDIQEwSAKImogFmlA3hEQWxDLQwppadEC7ZR22nndue97ztl7LX/MTNuZufPSKZ3G2Vl/7rkn+6xv77W+9cKaY06Ew3kRHOZrGsA0gGkA0wCmAfxPSw99IDLVVUYcDQAZg6QADikMIhABFsChugsz22g0AOKcMB/aI5ZSCEahp6uYg4xlQiICwjAM+yenvePkhcdF73eEm9rR14M1luGKVXViPKTnD/EvHGPmz5DQDTH3qopNJRZCAERAlEIgkQPCYQDGw0KHUHsnYp04BkRwLIGV0KKiwwEAAljBpKfq4hI6UEi1cT2nnpKe68jDqC6JU6WgQai7aaVeMAMqFhSBADBj0is8/FbpsY2YigHLVI3ECMCCMUMzUyAACvsfEoJWqiU9ekyaMk4sApEbxPRywMOJ+QAeNBrdx+NDCB0BYATOQRyQ6pnOsFRCG1J0kBIiRBAnwAxGDeEf9ExVAEhKeR4aD1gQgZk5GjWVYBuxPVi2zqUwvnx+7OQ52XvW7efHPgCKq+aRws4FAXowBZwYEaxQY9Isap7EXPETBEAIGsGxVCIg7JfJrwcO0mKRQiC5QEIHAFIIQBMoQl8f+E6/KOxPp1nGvCv9yWiPCc9bepRUItPahDHtnz4fPe068nZbJ2jq4yVMGEzHIHRSsegpUITpGBjq8w3E6rXWJEdihcNOTaHkKokLlqRXnyrFEByLZYxpMMRdxZ7rn5B8AJrAuvjKRXrBTKhY76TZrj1nd2ZUwgte2Bpt3SuetpEoVQXDJN9Ar+U4oUEc8iH0tZQiyQegERClGPZFXPS0SAUAQFHpqc0gm8Ry0y8uqqzbVvzTxpLxBBGMUpFrrFHZIvseDsGgJ4khwQnECO9f0PLbPdl/5CtJhYN4T6Tfa/vIfp8HH6AOJj0AAMuYjFEyhsnYymWNM1IUN3h8q3/WCekv/2j7tvYwZgZh0FWipYzMgzgiH7MAAVzclH4hU4yyjET9+8iojQKR/eL6X8vd94p0FiKiBS36rq/PEgHyacO7hULJKRyLRpEUaUNaD5KYgYAT5xxbc81paIG8YS9orbQmrTOWLdKwHQxSdb6uso8xdmM7dZUCMk++lt/RETqWqOTufDyzvYPjcTPkNIYBQERCJOoXJCRCrZBI1SdVc7r/p1L9fx0oSAqBkJBw/79ISASA1TsdgzcBJCI0NX5XGVYuqXnz3gUpX724sRBE8s8PKum0cTyWE7O1gxItBLEiecu9ZVesqHIY9eQwjKEi9FSfSgKgEUCwPxN2FqIIhByLAKBCCQNhV7Uq4SjkMARRICIAiiBiyGfc1Wc33vvdI9v2RJf8pG3zjsrqVQ0d3WUAcG6svhAg4mDfVHVxs7iFC6E+og7TfvzzCzEVczszdkcPaAUiCJBz7FgqggKQd+wsdwPEiQyC4Kil7b5kE8AoLAWMAPd868hvXtr84vrsFbe3tWdsKk53PdGV9KnqFerRsxcph/HLTk5edLwUQrBOWGpvOAM9ZT/sztz0pAgjoBU5vyk91zcCYBC/1Jie65sY4dquQkdkDeB4Eh+jMFNwRzSaB6+bvWJ57d1/2HvjA+0MUJtU1kkqTiM1q/SYBIkxLcVQCgGo/pYBGAUKwRAGHILM8vSvjm6p04pB8pavbKlVUEtGxXDvT3d2NWjFMEKnT/rvQCno7rWnHpN85OY5c1q8a27dce9T3TVJRQTWCQCM0mobRxyoSuECBzgAlpw4sQxgEHOWQ+EZA7XhwHdogPVxP7cqJIUWoCfrrljZcP+1s7tydsW1H7y0sVBfo1nG1SKchEBGCD6hQegr/jQCAGois8/0Ebm3DIToaQEBFjQkhihXCfJhFMltV8264cqWv7+Zu/xnOz/cEzbUauvGm3CP7wb6BQEHfg6EM4XYa3lHELX6JhTxEBlBEIrW7QgjTyGIYNyrvPxv+1G3lCP/tNbY0qOyP/+bF9eZjwt1zj5wy9yzz6x/8NHOb/9yd2ilPq3Gr/24AGBMo28gZBHpax+gIYwbQBAADZC1fO7mj2u18jU+vfjIG7d2PN5Z+FRab+kJAKAc45iHBOK2ddpM2VvcgorkX3v3FuWERcmHbzt64Tz/ujt23rm2KxWnRIwmpP1Y8wEBQAzf2aXnNUkppIYEetq25TDhRZvauRSiJhbxCPPsdhUsRlIscf0s/b1zZ1yyrO6tLaWnXs+/tqXY1hk5K8ZXsaShIHK7entDuuishoeunx0E7uzvf/D0hlxdjRYR62TsGmcwKQ9Np0nrIfMBiRx6mnOV1JVLdWtj9pbnMelJaFErpRAESgGXA26o0eedmLjzvOb0IpPP2Hc/Co9v9ZKNptJrX32v+Mwb+XWbg/d3R4WSMxpvvLDhh6ub39lSufz23ZvaKo014zT6/24+QChs2UYsLCJsI3KkDESRzeZZABbPiV22ovGKM+qbm/WbW4uP3N2x5pXsnoyd1aCXLUqsOjl9xpLUilNqwMGW7cHa9dn5R3iXnNv4xz93fePuXcVQ6hMqDKIJNGYmOB/oIz4UZmAmAAKuBK5SsumUOmdpavWqxi+ekrZWHns1+5vnM69sKpYqnIhTysfOnF2zvnfNut76tD5unn/mktSqk9I3XzoDCH5wz8c/fqTD9zDpYRhaHG8nqsp8YFwVGWrEbDlx9fJgdlP3d9YevbDm4uW1V51VP/fT/kfbK/c/l1mzvnfbroAIU3HSCh2LCCACIQJA5KQcsLMSi9GxR/lG44atpXSCCEfKzSdSiowOgAgQsRJxOWdTC5tOX1Z/+ZzwgtPqlcJnNuTue7bnr+8U8kXn+xT3CEAcVy93+vZxLKWARSAdJ+bJ6a2MBkAESgE7K7NnmguW133t87WLW/32DD/0l8zvX8q811ZBwFSCzMCRjzPqAcIkTuFGiwNG42fmJb66suErp9fFk/Ty28VL79j97OvZTNbFfKpPKQB0LBNibpZJnoBWB6AIs0V7/mdrH711XmZP+Ovnen73YubtbWVmSSVUQ51m7rOWQz9Urm5CiBBZmVmnP3dc6pk38nu7IuNhMk4IyDy1RuEj+gACWJZimRM++R4xC0/JGf6I8wER0AobasgxWAf7O/SHfA4yofmAAJCaMtZyiOcDB6nnDYf5mgYwDWAawDSAaQD/3wD+Ax0kwJSMxundAAAAAElFTkSuQmCC">
 <link rel="manifest" href="manifest.webmanifest">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,700..900&family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
 <style>
-/* Maket: bitta ustunli "cho'ntak terminal" — yuqorida juft va xulosa, pastda tafsilotlar, pastki tab paneli. */
+/* Maket: iPhone ilovasi uslubi — tizim shrifti (SF), shaffof yuqori va pastki panel, guruhlangan kartalar. */
 :root {
-  --bg: #EDF1F3; --surface: #FFFFFF; --surface-2: #F4F7F8; --ink: #0F1B22; --muted: #5C6C76; --line: #D6DEE2;
-  --accent: #0E6A80; --accent-ink: #FFFFFF; --buy: #0B8F62; --sell: #CC4035; --wait: #A87508;
-  --buy-soft: #DDF3EA; --sell-soft: #FBE3E0; --wait-soft: #F7EDD3; --chart-grid: #E3E9EC;
-  --f-display: "Archivo", "Arial Narrow", system-ui, sans-serif;
-  --f-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --f-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-  --r: 14px; --tabbar-h: 62px;
+  --bg: #F2F2F7; --surface: #FFFFFF; --surface-2: #F2F2F7; --ink: #000000; --muted: #6E6E73; --line: rgba(60,60,67,.14);
+  --accent: #0A84FF; --accent-ink: #FFFFFF; --buy: #1F9D55; --sell: #E5484D; --wait: #C47F00;
+  --buy-soft: rgba(52,199,89,.14); --sell-soft: rgba(255,59,48,.12); --wait-soft: rgba(255,159,10,.15); --chart-grid: rgba(60,60,67,.09);
+  --bar: rgba(249,249,251,.82);
+  --f-display: -apple-system, "SF Pro Display", system-ui, "Segoe UI", Roboto, sans-serif;
+  --f-body: -apple-system, "SF Pro Text", system-ui, "Segoe UI", Roboto, sans-serif;
+  --f-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --r: 16px; --tabbar-h: 54px; --top-h: 52px;
   color-scheme: light;
 }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
-  --bg: #0A1317; --surface: #111D23; --surface-2: #16252C; --ink: #E3EBEE; --muted: #8EA1AB; --line: #22353D;
-  --accent: #52B7D0; --accent-ink: #062027; --buy: #2EC48C; --sell: #F06B5F; --wait: #E3B23F;
-  --buy-soft: #12332A; --sell-soft: #3A1D1B; --wait-soft: #352A12; --chart-grid: #1B2B32; color-scheme: dark; } }
+  --bg: #000000; --surface: #1C1C1E; --surface-2: #2C2C2E; --ink: #FFFFFF; --muted: #98989F; --line: rgba(84,84,88,.55);
+  --accent: #0A84FF; --accent-ink: #FFFFFF; --buy: #30D158; --sell: #FF453A; --wait: #FFB340;
+  --buy-soft: rgba(48,209,88,.16); --sell-soft: rgba(255,69,58,.16); --wait-soft: rgba(255,179,64,.16); --chart-grid: rgba(255,255,255,.07);
+  --bar: rgba(22,22,24,.8); color-scheme: dark; } }
 :root[data-theme="dark"] {
-  --bg: #0A1317; --surface: #111D23; --surface-2: #16252C; --ink: #E3EBEE; --muted: #8EA1AB; --line: #22353D;
-  --accent: #52B7D0; --accent-ink: #062027; --buy: #2EC48C; --sell: #F06B5F; --wait: #E3B23F;
-  --buy-soft: #12332A; --sell-soft: #3A1D1B; --wait-soft: #352A12; --chart-grid: #1B2B32; color-scheme: dark; }
-* { box-sizing: border-box; }
+  --bg: #000000; --surface: #1C1C1E; --surface-2: #2C2C2E; --ink: #FFFFFF; --muted: #98989F; --line: rgba(84,84,88,.55);
+  --accent: #0A84FF; --accent-ink: #FFFFFF; --buy: #30D158; --sell: #FF453A; --wait: #FFB340;
+  --buy-soft: rgba(48,209,88,.16); --sell-soft: rgba(255,69,58,.16); --wait-soft: rgba(255,179,64,.16); --chart-grid: rgba(255,255,255,.07);
+  --bar: rgba(22,22,24,.8); color-scheme: dark; }
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 html, body { margin: 0; }
-html { padding-top: env(safe-area-inset-top, 0px); }
-body { background: var(--bg); color: var(--ink); font: 15px/1.45 var(--f-body); -webkit-text-size-adjust: 100%; }
+html { background: var(--bg); }
+body { background: var(--bg); color: var(--ink); font: 16px/1.4 var(--f-body); letter-spacing: -.01em; -webkit-text-size-adjust: 100%; -webkit-font-smoothing: antialiased; overscroll-behavior-y: none; }
+/* Ilova hissi: tugma va sarlavhalarni tasodifan belgilab qo'ymaslik, ikki marta bosib kattalashtirish yo'q */
+button, summary, .tabbar, .top, .chip, .seg, .pill, .eyebrow, .group-title, .switch span { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
+button, a, summary, input, select, label { touch-action: manipulation; }
 [hidden] { display: none !important; }
 button, input, select { font: inherit; color: inherit; }
 button { cursor: pointer; }
+:focus { outline: none; }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-.num, .mono { font-family: var(--f-mono); font-variant-numeric: tabular-nums; }
+.num, .mono { font-family: var(--f-mono); font-variant-numeric: tabular-nums; letter-spacing: 0; }
 
-.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg); border-bottom: 1px solid var(--line); }
-.top-in { max-width: 560px; margin: 0 auto; padding: 10px 16px; display: flex; align-items: center; gap: 10px; }
-.brand { font-family: var(--f-display); font-stretch: 78%; font-weight: 900; font-size: 22px; letter-spacing: .01em; }
-.brand b { color: var(--accent); }
-.src { margin-left: auto; display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--muted); }
-.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--muted); }
+.top { position: sticky; top: 0; z-index: 5; background: var(--bar); -webkit-backdrop-filter: saturate(180%) blur(20px); backdrop-filter: saturate(180%) blur(20px); border-bottom: .5px solid var(--line); padding-top: env(safe-area-inset-top, 0px); }
+.top-in { max-width: 560px; margin: 0 auto; height: var(--top-h); padding: 0 16px; display: flex; align-items: center; gap: 10px; }
+.brand { font-family: var(--f-display); font-weight: 700; font-size: 20px; letter-spacing: -.02em; }
+.brand b { color: var(--accent); font-weight: 700; }
+.src { margin-left: auto; display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--muted); }
+.dot { width: 7px; height: 7px; border-radius: 50%; background: var(--muted); }
 .dot.is-ok { background: var(--buy); } .dot.is-bad { background: var(--sell); }
 
-main { max-width: 560px; margin: 0 auto; padding-inline: 16px; padding-block: 14px calc(var(--tabbar-h) + 28px + env(safe-area-inset-bottom, 0px)); display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; }
-section.tab { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; min-width: 0; }
-.h2 { font-family: var(--f-display); font-stretch: 85%; font-weight: 800; font-size: 20px; margin: 4px 0 0; }
-.eyebrow { font-size: 11px; letter-spacing: .09em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+main { max-width: 560px; margin: 0 auto; padding-inline: max(16px, env(safe-area-inset-left, 0px)); padding-block: 12px calc(var(--tabbar-h) + 24px + env(safe-area-inset-bottom, 0px)); display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; }
+section.tab { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; min-width: 0; animation: fade .18s ease-out; }
+@keyframes fade { from { opacity: 0; transform: translateY(4px); } }
+.h2 { font-family: var(--f-display); font-weight: 700; font-size: 30px; letter-spacing: -.025em; margin: 6px 0 -2px; }
+.eyebrow { font-size: 12px; letter-spacing: .02em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+.group-title { font-size: 13px; text-transform: uppercase; letter-spacing: .02em; color: var(--muted); padding: 6px 16px 0; margin-bottom: -6px; }
 .muted { color: var(--muted); }
-.small { font-size: 13px; }
+.small { font-size: 14px; }
+.disclaimer { margin: 0; padding: 0 16px; font-size: 12px; color: var(--muted); text-align: center; }
 
-.card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 14px; display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; min-width: 0; }
+.card { background: var(--surface); border-radius: var(--r); padding: 14px 16px; display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; min-width: 0; }
 .row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.actions { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 8px; }
+.actions .btn { width: 100%; padding: 0 8px; }
 .search { display: flex; gap: 8px; }
-.search input { flex: 1 1 0; width: 0; min-width: 0; height: 46px; border-radius: 12px; border: 1px solid var(--line); background: var(--surface); padding: 0 14px; font-size: 16px; text-transform: uppercase; }
+.search input { flex: 1 1 0; width: 0; min-width: 0; height: 44px; border-radius: 12px; border: 0; background: var(--surface); padding: 0 14px; font-size: 17px; text-transform: uppercase; }
+.card .search input { background: var(--surface-2); }
 .search input::placeholder { text-transform: none; color: var(--muted); }
-.btn { height: 46px; padding: 0 18px; border-radius: 12px; border: 0; background: var(--accent); color: var(--accent-ink); font-weight: 600; }
-.btn.ghost { background: var(--surface-2); color: var(--ink); border: 1px solid var(--line); }
-.btn.sm { height: 36px; padding: 0 12px; border-radius: 10px; font-size: 14px; }
-.btn:disabled { opacity: .55; }
-.chips { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; padding-bottom: 2px; }
+.btn { height: 44px; padding: 0 18px; border-radius: 12px; border: 0; background: var(--accent); color: var(--accent-ink); font-weight: 600; font-size: 16px; transition: transform .08s, opacity .15s; }
+.btn:active { transform: scale(.97); opacity: .85; }
+.btn.ghost { background: var(--surface); color: var(--accent); }
+.card .btn.ghost { background: var(--surface-2); }
+.btn.sm { height: 36px; padding: 0 14px; border-radius: 10px; font-size: 15px; }
+.btn:disabled { opacity: .45; }
+.chips { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; margin: 0 -16px; padding: 0 16px 2px; }
 .chips::-webkit-scrollbar { display: none; }
-.chip { flex: none; height: 34px; padding: 0 12px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); font-size: 14px; font-weight: 500; }
-.chip[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
-.seg { display: grid; grid-template-columns: repeat(9, minmax(0, 1fr)); background: var(--surface-2); border: 1px solid var(--line); border-radius: 12px; padding: 3px; gap: 2px; }
-.seg button { height: 32px; border: 0; border-radius: 9px; background: transparent; font: 600 13px var(--f-mono); color: var(--muted); padding: 0; }
-.seg button[aria-pressed="true"] { background: var(--surface); color: var(--ink); box-shadow: 0 1px 2px rgba(0,0,0,.12); }
+.chip { flex: none; height: 32px; padding: 0 14px; border-radius: 999px; border: 0; background: var(--surface); font-size: 15px; font-weight: 500; }
+.chip:active { opacity: .7; }
+.chip[aria-pressed="true"] { background: var(--accent); color: #fff; }
+.seg { display: grid; grid-template-columns: repeat(9, minmax(0, 1fr)); background: rgba(118,118,128,.12); border-radius: 9px; padding: 2px; gap: 0; }
+.seg button { height: 30px; border: 0; border-radius: 7px; background: transparent; font: 600 13px var(--f-body); color: var(--ink); padding: 0; opacity: .75; }
+.seg button[aria-pressed="true"] { background: var(--surface); opacity: 1; box-shadow: 0 3px 8px rgba(0,0,0,.12), 0 1px 1px rgba(0,0,0,.04); }
+:root[data-theme="dark"] .seg button[aria-pressed="true"] { background: #636366; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .seg button[aria-pressed="true"] { background: #636366; } }
 
 /* Xulosa kartasi */
 .verdict { padding: 0; overflow: hidden; gap: 0; }
-.v-head { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; padding: 14px 14px 0; }
-.v-sym { font-family: var(--f-display); font-stretch: 85%; font-weight: 800; font-size: 22px; }
-.v-price { font: 600 18px var(--f-mono); font-variant-numeric: tabular-nums; }
-.v-band { margin: 12px 14px 0; border-radius: 12px; padding: 14px; display: grid; gap: 4px; }
+.v-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; padding: 16px 16px 0; }
+.v-sym { font-family: var(--f-display); font-weight: 700; font-size: 22px; letter-spacing: -.02em; }
+.v-price { font: 600 20px var(--f-mono); font-variant-numeric: tabular-nums; }
+.v-head .small { font-size: 13px; }
+.v-band { margin: 12px 12px 0; border-radius: 12px; padding: 14px; display: grid; gap: 4px; }
 .v-band.buy { background: var(--buy-soft); } .v-band.sell { background: var(--sell-soft); } .v-band.wait { background: var(--wait-soft); } .v-band.flat { background: var(--surface-2); }
-.v-word { font-family: var(--f-display); font-stretch: 70%; font-weight: 900; font-size: 46px; line-height: .95; letter-spacing: .01em; }
+.v-word { font-family: var(--f-display); font-weight: 800; font-size: 40px; line-height: 1; letter-spacing: -.03em; }
 .buy .v-word { color: var(--buy); } .sell .v-word { color: var(--sell); } .wait .v-word { color: var(--wait); } .flat .v-word { color: var(--muted); }
-.v-sub { font-size: 14px; }
-.levels3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; padding: 12px 14px 0; }
-.lv { background: var(--surface-2); border-radius: 10px; padding: 8px 10px; min-width: 0; }
-.lv .eyebrow { font-size: 10px; }
+.v-sub { font-size: 15px; }
+.levels3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; padding: 12px 12px 0; }
+.lv { background: var(--surface-2); border-radius: 12px; padding: 9px 10px; min-width: 0; }
+.lv .eyebrow { font-size: 11px; }
 .lv .num { font-size: 15px; font-weight: 600; overflow-wrap: anywhere; }
 .lv .pct { font-size: 12px; color: var(--muted); font-family: var(--f-mono); }
 .lv.sl .num { color: var(--sell); } .lv.tp .num { color: var(--buy); }
-.v-foot { padding: 12px 14px 14px; display: grid; gap: 8px; }
+.v-foot { padding: 12px 16px 16px; display: grid; gap: 8px; }
+.v-foot:empty { padding: 0 0 12px; }
 .strength { display: inline-flex; gap: 3px; vertical-align: middle; }
 .strength i { width: 10px; height: 10px; border-radius: 3px; background: var(--line); display: block; }
 .strength i.on { background: var(--accent); }
-.calc { font-size: 13px; color: var(--muted); border-top: 1px dashed var(--line); padding-top: 8px; }
+.calc { font-size: 13px; color: var(--muted); border-top: .5px solid var(--line); padding-top: 10px; }
 .calc b { color: var(--ink); font-family: var(--f-mono); font-weight: 600; }
 
-canvas.chart { width: 100%; height: 260px; display: block; touch-action: pan-y; cursor: crosshair; }
-.mtf-row { display: grid; grid-template-columns: 44px minmax(0, 1fr) auto; gap: 4px 10px; align-items: center; padding: 8px 0; border-top: 1px solid var(--line); background: none; border-left: 0; border-right: 0; border-bottom: 0; text-align: left; width: 100%; }
-.mtf-row:first-of-type { border-top: 0; }
-.mtf-row[aria-current="true"] .mono { color: var(--accent); font-weight: 700; }
-.mtf-row .meta { grid-column: 2 / -1; font-size: 12px; color: var(--muted); font-family: var(--f-mono); }
-.consensus { display: flex; justify-content: space-between; align-items: center; gap: 10px; background: var(--surface-2); border-radius: 10px; padding: 8px 10px; font-size: 14px; }
-svg.equity { width: 100%; height: 70px; display: block; }
-.tg-post { display: grid; gap: 6px; padding: 10px 0; border-top: 1px solid var(--line); }
-.tg-post:first-of-type { border-top: 0; }
-.tg-head { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
-.tg-text { font-size: 13px; color: var(--muted); white-space: pre-wrap; overflow-wrap: anywhere; max-height: 4.5em; overflow: hidden; }
-.tg-text.open { max-height: none; }
-.tg-chan { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 8px 0; border-top: 1px solid var(--line); font-size: 14px; }
-.tg-chan:first-child { border-top: 0; }
-.toast { position: fixed; left: 50%; top: calc(env(safe-area-inset-top, 0px) + 10px); transform: translateX(-50%); z-index: 20; width: min(528px, calc(100% - 32px)); background: var(--ink); color: var(--bg); border-radius: 12px; padding: 12px 14px; font-size: 14px; box-shadow: 0 6px 24px rgba(0,0,0,.25); border: 0; text-align: left; }
+canvas.chart { width: 100%; height: 260px; display: block; touch-action: pan-y; }
 .legend { display: flex; gap: 12px; flex-wrap: wrap; font-size: 12px; color: var(--muted); }
-.legend span::before { content: ""; display: inline-block; width: 14px; height: 3px; border-radius: 2px; margin-right: 5px; vertical-align: middle; background: var(--c); }
+.legend span::before { content: ""; display: inline-block; width: 12px; height: 3px; border-radius: 2px; margin-right: 5px; vertical-align: middle; background: var(--c); }
 
-.prob { display: grid; gap: 6px; }
+/* Ochiladigan ro'yxat (iOS sozlamalar uslubi) */
+.card.group { padding: 0; gap: 0; overflow: hidden; }
+.fold + .fold { border-top: .5px solid var(--line); margin-left: 16px; }
+.fold + .fold > summary { padding-left: 0; }
+.fold > summary { list-style: none; display: flex; align-items: center; gap: 10px; min-height: 48px; padding: 0 16px; font-size: 16px; cursor: pointer; }
+.fold > summary::-webkit-details-marker { display: none; }
+.fold > summary > span:first-child { flex: 1; min-width: 0; }
+.fold-v { color: var(--muted); font-size: 15px; font-family: var(--f-mono); }
+.fold > summary::after { content: ""; width: 7px; height: 7px; border-right: 2px solid var(--muted); border-bottom: 2px solid var(--muted); transform: rotate(-45deg); opacity: .6; transition: transform .2s; margin-left: 2px; }
+.fold[open] > summary::after { transform: rotate(45deg); }
+.fold > summary:active { background: var(--surface-2); }
+.fold-b { display: grid; gap: 10px; padding: 0 16px 14px; }
+.fold + .fold .fold-b { padding-left: 0; }
+
 .pbar { display: flex; height: 26px; border-radius: 8px; overflow: hidden; font: 600 13px var(--f-mono); }
 .pbar .u { background: var(--buy); color: #fff; display: flex; align-items: center; padding-left: 8px; }
 .pbar .d { background: var(--sell); color: #fff; display: flex; align-items: center; justify-content: flex-end; padding-right: 8px; flex: 1; }
 .note { font-size: 13px; color: var(--muted); }
 
 .trend-row { display: grid; grid-template-columns: 44px 1fr 74px; align-items: center; gap: 10px; font-size: 14px; }
-.meter { position: relative; height: 10px; background: var(--surface-2); border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
-.meter::after { content: ""; position: absolute; left: 50%; top: -2px; bottom: -2px; width: 1px; background: var(--muted); opacity: .5; }
-.meter i { position: absolute; top: 0; bottom: 0; display: block; }
+.meter { position: relative; height: 8px; background: var(--surface-2); border-radius: 4px; overflow: hidden; }
+.meter::after { content: ""; position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background: var(--muted); opacity: .45; }
+.meter i { position: absolute; top: 0; bottom: 0; display: block; border-radius: 4px; }
 .tag { font-size: 12px; font-weight: 600; text-align: right; }
 .tag.up { color: var(--buy); } .tag.dn { color: var(--sell); } .tag.fl { color: var(--muted); }
 
-.list { display: grid; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.list { display: grid; gap: 7px; margin: 0; padding: 0; list-style: none; }
 .list li { display: grid; grid-template-columns: 18px 1fr; gap: 6px; font-size: 14px; }
 .ok-i { color: var(--buy); font-weight: 700; } .no-i { color: var(--sell); font-weight: 700; } .na-i { color: var(--muted); }
 .kv { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
-.kv div { background: var(--surface-2); border-radius: 10px; padding: 8px 10px; }
-.kv .num { font-size: 16px; font-weight: 600; }
-.pill { display: inline-flex; align-items: center; height: 24px; padding: 0 9px; border-radius: 999px; font-size: 12px; font-weight: 600; }
+.kv div { background: var(--surface-2); border-radius: 12px; padding: 9px 11px; }
+.kv div div { padding: 0; background: none; }
+.kv .num { font-size: 17px; font-weight: 600; }
+.pill { display: inline-flex; align-items: center; height: 24px; padding: 0 10px; border-radius: 999px; font-size: 12px; font-weight: 600; white-space: nowrap; }
 .pill.buy { background: var(--buy-soft); color: var(--buy); } .pill.sell { background: var(--sell-soft); color: var(--sell); }
 .pill.wait { background: var(--wait-soft); color: var(--wait); } .pill.flat { background: var(--surface-2); color: var(--muted); }
 
-.srow { display: grid; grid-template-columns: 1fr auto; gap: 4px 10px; align-items: center; padding: 10px 0; border-top: 1px solid var(--line); background: none; border-left: 0; border-right: 0; border-bottom: 0; text-align: left; width: 100%; }
-.srow:first-child { border-top: 0; }
+.srow { display: grid; grid-template-columns: 1fr auto; gap: 3px 10px; align-items: center; padding: 11px 0; border-top: .5px solid var(--line); background: none; border-left: 0; border-right: 0; border-bottom: 0; text-align: left; width: 100%; font-size: 16px; }
+.srow:first-child, .eyebrow + .srow { border-top: 0; }
+button.srow:active { opacity: .6; }
 .srow .sym { font-weight: 600; }
 .srow .meta { grid-column: 1 / -1; font-size: 12px; color: var(--muted); font-family: var(--f-mono); }
-.progress { height: 6px; background: var(--surface-2); border-radius: 4px; overflow: hidden; }
+.progress { height: 4px; background: var(--surface); border-radius: 2px; overflow: hidden; }
 .progress i { display: block; height: 100%; width: 0; background: var(--accent); transition: width .2s; }
-.empty { text-align: center; color: var(--muted); padding: 18px 8px; font-size: 14px; }
-.err { background: var(--sell-soft); color: var(--sell); border-radius: 12px; padding: 12px 14px; font-size: 14px; }
-.warnbox { background: var(--wait-soft); border-radius: 12px; padding: 12px 14px; font-size: 13px; }
+.empty { text-align: center; color: var(--muted); padding: 16px 8px; font-size: 15px; }
+.err { background: var(--sell-soft); color: var(--sell); border-radius: 14px; padding: 12px 14px; font-size: 14px; }
+.warnbox { background: var(--wait-soft); border-radius: 14px; padding: 12px 14px; font-size: 14px; }
 .field { display: grid; gap: 4px; }
 .field label { font-size: 13px; color: var(--muted); }
-.field input, .field select { height: 44px; border-radius: 10px; border: 1px solid var(--line); background: var(--surface); padding: 0 12px; font-size: 16px; }
+.field input, .field select { width: 100%; min-width: 0; height: 44px; border-radius: 10px; border: 0; background: var(--surface-2); padding: 0 12px; font-size: 17px; -webkit-appearance: none; appearance: none; }
 .grid2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
-.switch { display: flex; align-items: center; justify-content: space-between; gap: 10px; font-size: 14px; }
-.switch input { flex: none; width: 24px; height: 24px; margin: 0; accent-color: var(--accent); }
+/* iOS kalit (toggle) */
+.switch { display: flex; align-items: center; justify-content: space-between; gap: 12px; font-size: 16px; min-height: 36px; }
+.switch input { flex: none; -webkit-appearance: none; appearance: none; width: 51px; height: 31px; margin: 0; border-radius: 999px; background: rgba(120,120,128,.24); position: relative; transition: background .2s; cursor: pointer; }
+.switch input::after { content: ""; position: absolute; top: 2px; left: 2px; width: 27px; height: 27px; border-radius: 50%; background: #fff; box-shadow: 0 3px 8px rgba(0,0,0,.15), 0 1px 1px rgba(0,0,0,.16); transition: transform .2s; }
+.switch input:checked { background: #34C759; }
+.switch input:checked::after { transform: translateX(20px); }
+.switch input:disabled { opacity: .4; }
+details.more > summary { color: var(--accent); cursor: pointer; list-style: none; }
+details.more > summary::-webkit-details-marker { display: none; }
 ol.steps { margin: 0; padding-left: 20px; display: grid; gap: 6px; font-size: 14px; }
-.skeleton { height: 120px; border-radius: var(--r); background: linear-gradient(90deg, var(--surface) 0%, var(--surface-2) 50%, var(--surface) 100%); background-size: 200% 100%; animation: sk 1.2s infinite linear; border: 1px solid var(--line); }
+.skeleton { height: 120px; border-radius: var(--r); background: linear-gradient(90deg, var(--surface) 0%, var(--surface-2) 50%, var(--surface) 100%); background-size: 200% 100%; animation: sk 1.2s infinite linear; }
 @keyframes sk { to { background-position: -200% 0; } }
-@media (prefers-reduced-motion: reduce) { .skeleton { animation: none; } .progress i { transition: none; } }
 
-.tabbar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 6; background: var(--surface); border-top: 1px solid var(--line); padding-bottom: env(safe-area-inset-bottom, 0px); }
+.tabbar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 6; background: var(--bar); -webkit-backdrop-filter: saturate(180%) blur(20px); backdrop-filter: saturate(180%) blur(20px); border-top: .5px solid var(--line); padding-bottom: env(safe-area-inset-bottom, 0px); }
 .tabbar-in { max-width: 560px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); height: var(--tabbar-h); }
-.tabbar button { border: 0; background: none; display: grid; justify-items: center; align-content: center; gap: 3px; font-size: 11px; font-weight: 600; color: var(--muted); }
-.tabbar button svg { width: 24px; height: 24px; }
+.tabbar button { border: 0; background: none; display: grid; justify-items: center; align-content: center; gap: 2px; font-size: 10px; font-weight: 500; color: var(--muted); padding-top: 4px; }
+.tabbar button svg { width: 26px; height: 26px; }
 .tabbar button[aria-selected="true"] { color: var(--accent); }
+
+.mtf-row { display: grid; grid-template-columns: 40px minmax(0, 1fr) auto; gap: 4px 10px; align-items: center; padding: 9px 0; border-top: .5px solid var(--line); background: none; border-left: 0; border-right: 0; border-bottom: 0; text-align: left; width: 100%; }
+.eyebrow + .mtf-row { border-top: 0; }
+.mtf-row:active { opacity: .6; }
+.mtf-row[aria-current="true"] .mono { color: var(--accent); font-weight: 700; }
+.mtf-row .meta { grid-column: 2 / -1; font-size: 12px; color: var(--muted); font-family: var(--f-mono); }
+.consensus { display: flex; justify-content: space-between; align-items: center; gap: 10px; background: var(--surface-2); border-radius: 12px; padding: 9px 12px; font-size: 15px; }
+.consensus .pill { white-space: normal; height: auto; min-height: 24px; padding: 4px 10px; text-align: right; line-height: 1.25; }
+svg.equity { width: 100%; height: 70px; display: block; }
+.tg-post { display: grid; gap: 6px; padding: 12px 0; border-top: .5px solid var(--line); }
+.tg-post:first-of-type { border-top: 0; padding-top: 0; }
+.tg-head { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.tg-text { font-size: 13px; color: var(--muted); white-space: pre-wrap; overflow-wrap: anywhere; max-height: 4.3em; overflow: hidden; }
+.tg-text.open { max-height: none; }
+.tg-chan { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 9px 0; border-top: .5px solid var(--line); font-size: 15px; }
+.tg-chan:first-child { border-top: 0; }
+.tg-chan a { text-decoration: none; }
+.toast { position: fixed; left: 50%; top: calc(env(safe-area-inset-top, 0px) + 8px); transform: translateX(-50%); z-index: 20; width: min(528px, calc(100% - 24px)); background: var(--bar); -webkit-backdrop-filter: saturate(180%) blur(24px); backdrop-filter: saturate(180%) blur(24px); color: var(--ink); border-radius: 18px; padding: 13px 16px; font-size: 15px; font-weight: 500; box-shadow: 0 10px 30px rgba(0,0,0,.18); border: .5px solid var(--line); text-align: left; animation: drop .25s ease-out; }
+@keyframes drop { from { opacity: 0; transform: translate(-50%, -12px); } }
+.install-tip { display: flex; gap: 10px; align-items: center; background: var(--surface); border-radius: var(--r); padding: 12px 14px; font-size: 14px; }
+.install-tip span { flex: 1; }
+.install-tip button { border: 0; background: none; color: var(--muted); font-size: 20px; padding: 0 4px; }
+/* Professional grafik */
+.chart-card { padding: 0; gap: 0; overflow: hidden; }
+.chart-bar { display: flex; align-items: center; gap: 8px; padding: 10px 12px 8px 16px; }
+.chart-title { flex: 1; min-width: 0; font-size: 15px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.live { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--muted); vertical-align: 2px; margin-left: 4px; opacity: .5; }
+.live.on { background: var(--buy); opacity: 1; animation: pulse 2s infinite; }
+@keyframes pulse { 50% { opacity: .35; } }
+.icon-btn { flex: none; width: 36px; height: 36px; border-radius: 10px; border: 0; background: var(--surface-2); font-size: 17px; color: var(--ink); }
+.pro-btn { flex: none; padding: 0 14px; font-weight: 700; box-shadow: 0 4px 14px rgba(10,132,255,.35); }
+.lwc-wrap { position: relative; }
+.lwc { height: min(56vh, 440px); min-height: 300px; }
+.ohlc { padding: 0 16px 6px; font-size: 11px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-height: 20px; }
+.ohlc b { color: var(--ink); font-weight: 600; }
+.chart-card .legend { padding: 8px 16px 12px; }
+.chart-card.fs { position: fixed; inset: 0; z-index: 40; border-radius: 0; display: flex; flex-direction: column; padding: env(safe-area-inset-top, 0px) env(safe-area-inset-right, 0px) env(safe-area-inset-bottom, 0px) env(safe-area-inset-left, 0px); }
+.chart-card.fs .lwc-wrap { flex: 1; min-height: 0; }
+.chart-card.fs .lwc, .chart-card.fs canvas.chart { height: 100%; min-height: 0; }
+body.no-scroll { overflow: hidden; }
+/* Tahlil oynasi (pastdan chiqadi) */
+.sheet { position: fixed; inset: 0; z-index: 50; }
+.sheet-bg { position: absolute; inset: 0; background: rgba(0,0,0,.4); opacity: 0; transition: opacity .22s; }
+.sheet-in { position: absolute; left: 0; right: 0; bottom: 0; max-width: 560px; margin: 0 auto; max-height: calc(100% - env(safe-area-inset-top, 0px) - 24px); overflow-y: auto; -webkit-overflow-scrolling: touch; overscroll-behavior: contain;
+  background: var(--bg); border-radius: 18px 18px 0 0; padding: 6px 16px calc(20px + env(safe-area-inset-bottom, 0px)); display: grid; gap: 12px; transform: translateY(100%); transition: transform .26s cubic-bezier(.2,.8,.2,1); }
+.sheet.open .sheet-bg { opacity: 1; } .sheet.open .sheet-in { transform: none; }
+.grab { width: 36px; height: 5px; border-radius: 3px; background: var(--line); margin: 2px auto 0; }
+.sheet-top { display: flex; justify-content: space-between; align-items: center; font-size: 17px; }
+#sheetBody { display: grid; gap: 12px; }
+.pro-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; background: var(--surface); border-radius: var(--r); padding: 14px 16px; }
+.pro-head.buy .v-word { color: var(--buy); } .pro-head.sell .v-word { color: var(--sell); } .pro-head.flat .v-word { color: var(--muted); }
+.conf { text-align: right; } .conf-n { font: 700 30px var(--f-display); letter-spacing: -.02em; }
+.confbar { height: 6px; border-radius: 3px; background: var(--surface); overflow: hidden; margin-top: -4px; }
+.confbar i { display: block; height: 100%; background: var(--muted); } .confbar i.buy { background: var(--buy); } .confbar i.sell { background: var(--sell); }
+.pro-sum { margin: 0; background: var(--surface); border-radius: var(--r); padding: 14px 16px; font-size: 16px; line-height: 1.45; }
+.pro-sec { background: var(--surface); border-radius: var(--r); padding: 14px 16px; display: grid; gap: 10px; }
+.plan { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.plan div { background: var(--surface-2); border-radius: 12px; padding: 9px 11px; display: grid; gap: 1px; min-width: 0; }
+.plan span { font-size: 12px; color: var(--muted); } .plan b { font: 600 15px var(--f-mono); overflow-wrap: anywhere; } .plan em { font: normal 12px var(--f-mono); color: var(--muted); }
+.plan .sl b { color: var(--sell); } .plan .tp b { color: var(--buy); }
+@media (prefers-reduced-motion: reduce) { .sheet-in, .sheet-bg { transition: none; } .live.on { animation: none; } }
+@media (prefers-reduced-motion: reduce) { .skeleton, section.tab, .toast { animation: none; } .progress i, .switch input, .switch input::after, .btn { transition: none; } }
 </style>
 </head>
 <body>
@@ -178,8 +268,9 @@ ol.steps { margin: 0; padding-left: 20px; display: grid; gap: 6px; font-size: 14
 <main>
   <!-- ============ TAHLIL ============ -->
   <section class="tab" id="tab-tahlil">
+    <div class="install-tip" id="installTip" hidden><span>Ilova kabi ishlatish uchun: <b>Ulashish</b> <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" style="vertical-align:-2px"><path d="M12 3v12M8 7l4-4 4 4M5 12v8h14v-8"/></svg> → <b>Bosh ekranga qo'shish</b></span><button type="button" id="installX" aria-label="Yopish">×</button></div>
     <form class="search" id="searchForm" autocomplete="off">
-      <input id="symInput" inputmode="text" placeholder="BTC, ETH, SOL, oltin…" aria-label="Juft nomi" value="BTC">
+      <input id="symInput" inputmode="text" enterkeyhint="search" autocapitalize="characters" autocorrect="off" spellcheck="false" placeholder="BTC, ETH, SOL, oltin…" aria-label="Juft nomi" value="BTC">
       <button class="btn" type="submit">Tahlil</button>
     </form>
     <div class="chips" id="quickChips"></div>
@@ -190,9 +281,8 @@ ol.steps { margin: 0; padding-left: 20px; display: grid; gap: 6px; font-size: 14
   <!-- ============ SKANER ============ -->
   <section class="tab" id="tab-skaner" hidden>
     <div class="h2">Skaner</div>
-    <p class="muted small" style="margin:0">Eng faol juftlarni bir yo'la tekshiradi: qayerda hozir kirish signali bor, qaysi biri o'sishga yoki tushishga moyil.</p>
     <div class="seg" id="scanTf" role="group" aria-label="Skaner taymfreymi"></div>
-    <div class="row"><span class="small muted">Nechta juft:</span><div class="chips" id="scanN"></div></div>
+    <div class="row" style="justify-content:space-between"><span class="small muted">Eng faol juftlar</span><div class="chips" id="scanN" style="margin:0;padding:0"></div></div>
     <button class="btn" id="scanBtn">Skanerlash</button>
     <div class="progress" id="scanProg" hidden><i></i></div>
     <div id="scanOut"></div>
@@ -200,89 +290,90 @@ ol.steps { margin: 0; padding-left: 20px; display: grid; gap: 6px; font-size: 14
 
   <!-- ============ KUZATUV ============ -->
   <section class="tab" id="tab-kuzatuv" hidden>
-    <div class="h2">Kuzatuv</div>
-    <div class="card">
-      <form class="search" id="watchForm" autocomplete="off">
-        <input id="watchInput" placeholder="Juft qo'shish: SOL, DOGE…" aria-label="Kuzatuvga qo'shish">
-        <button class="btn ghost" type="submit">Qo'shish</button>
-      </form>
-      <div class="switch"><span>Har daqiqada avtomatik tekshirish</span><input type="checkbox" id="autoChk"></div>
-      <div class="switch"><span>Ekran o'chmasin (kuzatayotganda)</span><input type="checkbox" id="wakeChk"></div>
-      <div class="switch"><span>Signal bo'lsa ovoz va titrash</span><input type="checkbox" id="soundChk"></div>
-      <div class="switch"><span>Signal bo'lsa telefon bildirishnomasi</span><input type="checkbox" id="notifChk"></div>
-      <div class="small muted" id="notifMsg" hidden></div>
-      <div class="row"><button class="btn sm" id="watchRefresh">Hozir tekshirish</button><span class="small muted" id="watchStamp"></span></div>
-    </div>
+    <div class="row" style="justify-content:space-between;align-items:flex-end"><div class="h2">Kuzatuv</div><button class="btn ghost sm" id="watchRefresh">↻ Tekshirish</button></div>
+    <form class="search" id="watchForm" autocomplete="off">
+      <input id="watchInput" enterkeyhint="done" autocapitalize="characters" autocorrect="off" spellcheck="false" placeholder="Juft qo'shish: SOL, DOGE…" aria-label="Kuzatuvga qo'shish">
+      <button class="btn ghost" type="submit">Qo'shish</button>
+    </form>
     <div class="card" id="watchList"></div>
-    <div class="h2">Telegram signallari</div>
-    <p class="muted small" style="margin:0">Sozlamalarda qo'shilgan kanallarda yangi signal chiqsa, shu yerda ko'rinadi va ilova ovoz/bildirishnoma bilan xabar beradi.</p>
+    <div class="small muted" id="watchStamp" style="padding:0 16px;margin-top:-6px"></div>
+    <div class="group-title">Telegram signallari</div>
     <div class="card" id="tgFeed"></div>
-    <div class="h2">Signallar natijasi</div>
-    <p class="muted small" style="margin:0">Har bir signal TP yoki SL ga yetguncha kuzatiladi. Bu ilovaning haqiqiy aniqligi shu yerda ko'rinadi.</p>
+    <div class="group-title">Signallar natijasi</div>
     <div class="card" id="journal"></div>
-    <div class="row"><button class="btn ghost sm" id="jCsv">CSV yuklab olish</button><button class="btn ghost sm" id="jClear">Natijalarni tozalash</button></div>
+    <div class="actions"><button class="btn ghost sm" id="jCsv">CSV yuklab olish</button><button class="btn ghost sm" id="jClear" style="color:var(--sell)">Tozalash</button></div>
   </section>
 
   <!-- ============ SOZLAMA ============ -->
   <section class="tab" id="tab-sozlama" hidden>
     <div class="h2">Sozlamalar</div>
+
+    <div class="group-title">Xabarlar</div>
     <div class="card">
-      <div class="eyebrow">Hisob va risk</div>
-      <div class="grid2">
-        <div class="field"><label for="setBal">Balans (USDT)</label><input id="setBal" type="number" inputmode="decimal" min="0" step="any"></div>
-        <div class="field"><label for="setRisk">Risk har savdoda, %</label><input id="setRisk" type="number" inputmode="decimal" min="0.1" max="5" step="0.1"></div>
-        <div class="field"><label for="setRR">Risk : Foyda (RR)</label><input id="setRR" type="number" inputmode="decimal" min="1" max="5" step="0.5"></div>
-        <div class="field"><label for="setMin">Kamida tasdiq (0–6)</label><input id="setMin" type="number" inputmode="numeric" min="0" max="6" step="1"></div>
-        <div class="field"><label for="setAdx">ADX minimal</label><input id="setAdx" type="number" inputmode="numeric" min="10" max="40" step="1"></div>
-        <div class="field"><label for="setTheme">Ko'rinish</label><select id="setTheme"><option value="">Telefon bo'yicha</option><option value="light">Yorug'</option><option value="dark">Qorong'i</option></select></div>
-      </div>
-      <button class="btn" id="saveSet">Saqlash</button>
-      <div class="small muted" id="setMsg"></div>
+      <div class="switch"><span>Ovoz va titrash</span><input type="checkbox" id="soundChk"></div>
+      <div class="switch"><span>Bildirishnoma</span><input type="checkbox" id="notifChk"></div>
+      <div class="small muted" id="notifMsg" hidden></div>
+      <div class="switch"><span>Kuzatuvni har daqiqa tekshirish</span><input type="checkbox" id="autoChk"></div>
+      <div class="switch"><span>Ekran o'chmasin</span><input type="checkbox" id="wakeChk"></div>
     </div>
+
+    <div class="group-title">Telegram kanallari</div>
     <div class="card">
-      <div class="eyebrow">Telegram signal kanallari</div>
-      <p class="small muted" style="margin:0">Signal beradigan Telegram kanal havolasini qo'shing (masalan <span class="mono">https://t.me/kanal_nomi</span>). Kanalda yangi BUY/SELL (LONG/SHORT) signal chiqishi bilan ilova xabar beradi: ovoz, titrash va bildirishnoma (Kuzatuv bo'limidagi sozlamalar bo'yicha).</p>
       <form class="search" id="tgForm" autocomplete="off">
-        <input id="tgInput" placeholder="https://t.me/kanal_nomi yoki @kanal" aria-label="Telegram kanal havolasi" style="text-transform:none">
+        <input id="tgInput" type="url" enterkeyhint="done" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="t.me/kanal_nomi yoki @kanal" aria-label="Telegram kanal havolasi" style="text-transform:none">
         <button class="btn ghost" type="submit">Qo'shish</button>
       </form>
       <div id="tgChans"></div>
-      <div class="field"><label for="tgEvery">Tekshirish oralig'i</label><select id="tgEvery"><option value="30">30 soniya</option><option value="60">1 daqiqa</option><option value="120">2 daqiqa</option><option value="300">5 daqiqa</option></select></div>
-      <div class="switch"><span>Faqat signal postlari haqida xabar berish (boshqa postlar e'tiborsiz)</span><input type="checkbox" id="tgOnlySig"></div>
-      <details class="small"><summary class="muted">Qo'shimcha: o'z proksi manzilingiz</summary>
-        <p class="muted" style="margin:6px 0">Telegram sahifasini brauzer to'g'ridan-to'g'ri o'qiy olmaydi, shuning uchun ochiq proksi xizmatlari ishlatiladi. Ular ishlamay qolsa, o'z proksingizni (masalan Cloudflare Worker, README'da yozilgan) shu yerga qo'ying. <span class="mono">{url}</span> o'rniga kanal manzili qo'yiladi.</p>
-        <input id="tgProxy" class="mono" placeholder="https://proksi.example.workers.dev/?url={url}" style="width:100%;height:40px;border-radius:10px;border:1px solid var(--line);background:var(--surface);padding:0 10px">
+      <div class="row" style="justify-content:space-between"><button class="btn ghost sm" id="tgCheck" type="button">↻ Tekshirish</button><span class="small muted" id="tgStamp"></span></div>
+      <details class="more small"><summary>Qo'shimcha</summary>
+        <div style="display:grid;gap:10px;margin-top:10px">
+          <div class="field"><label for="tgEvery">Tekshirish oralig'i</label><select id="tgEvery"><option value="30">30 soniya</option><option value="60">1 daqiqa</option><option value="120">2 daqiqa</option><option value="300">5 daqiqa</option></select></div>
+          <div class="switch"><span>Faqat signal postlari</span><input type="checkbox" id="tgOnlySig"></div>
+          <div class="field"><label for="tgProxy">O'z proksi manzilingiz (ixtiyoriy)</label><input id="tgProxy" class="mono" type="url" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="https://…workers.dev/?url={url}" style="font-size:14px"></div>
+          <div class="note">Faqat ochiq kanallar (<span class="mono">t.me/nom</span>) ishlaydi, yopiq (<span class="mono">t.me/+…</span>) kanallar emas. Ilova yopiq bo'lsa tekshiruv to'xtaydi.</div>
+        </div>
       </details>
-      <div class="row"><button class="btn sm" id="tgCheck" type="button">Hozir tekshirish</button><span class="small muted" id="tgStamp"></span></div>
-      <div class="note">Faqat <b>ochiq</b> kanallar ishlaydi (havolasi <span class="mono">t.me/nom</span> ko'rinishida). Yopiq kanallar (<span class="mono">t.me/+…</span>) va guruhlarni o'qib bo'lmaydi. Ilova yopiq bo'lsa tekshiruv to'xtaydi — signal o'tkazib yuborilmasligi uchun ilovani ochiq (yoki fonda) qoldiring.</div>
     </div>
+
+    <div class="group-title">Hisob va risk</div>
     <div class="card">
-      <div class="eyebrow">Zaxira nusxa</div>
-      <p class="small muted" style="margin:0">Sozlamalar, kuzatuv ro'yxati va signallar natijasi faqat shu telefonda saqlanadi. Boshqa telefonga o'tkazish yoki brauzer tozalanishidan oldin faylga saqlab qo'ying.</p>
-      <div class="row"><button class="btn ghost sm" id="bkExport">Faylga saqlash</button><button class="btn ghost sm" id="bkImport">Fayldan tiklash</button><input type="file" id="bkFile" accept="application/json,.json" hidden></div>
+      <div class="grid2">
+        <div class="field"><label for="setBal">Balans, USDT</label><input id="setBal" type="number" inputmode="decimal" min="0" step="any"></div>
+        <div class="field"><label for="setRisk">Risk, %</label><input id="setRisk" type="number" inputmode="decimal" min="0.1" max="5" step="0.1"></div>
+      </div>
+      <details class="more small"><summary>Strategiya parametrlari</summary>
+        <div class="grid2" style="margin-top:10px">
+          <div class="field"><label for="setRR">Risk : Foyda</label><input id="setRR" type="number" inputmode="decimal" min="1" max="5" step="0.5"></div>
+          <div class="field"><label for="setMin">Kamida tasdiq</label><input id="setMin" type="number" inputmode="numeric" min="0" max="6" step="1"></div>
+          <div class="field"><label for="setAdx">ADX minimal</label><input id="setAdx" type="number" inputmode="numeric" min="10" max="40" step="1"></div>
+          <div class="field"><label for="setTheme">Ko'rinish</label><select id="setTheme"><option value="">Avto</option><option value="light">Yorug'</option><option value="dark">Qorong'i</option></select></div>
+        </div>
+      </details>
+      <button class="btn" id="saveSet">Saqlash</button>
+      <div class="small muted" id="setMsg"></div>
+    </div>
+
+    <div class="group-title">Ma'lumotlar</div>
+    <div class="card">
+      <div class="small" id="srcInfo"></div>
+      <div class="actions"><button class="btn ghost sm" id="srcRetry">Manbani yangilash</button></div>
+      <div class="actions"><button class="btn ghost sm" id="bkExport">Zaxira saqlash</button><button class="btn ghost sm" id="bkImport">Zaxiradan tiklash</button></div>
+      <input type="file" id="bkFile" accept="application/json,.json" hidden>
       <div class="small muted" id="bkMsg"></div>
     </div>
-    <div class="card">
-      <div class="eyebrow">Narxlar manbai</div>
-      <div class="small" id="srcInfo"></div>
-      <button class="btn ghost sm" id="srcRetry">Manbani qayta aniqlash</button>
-    </div>
-    <div class="card">
-      <div class="eyebrow">Telefon ekraniga ilova qilib qo'yish</div>
+
+    <div class="card" id="installCard">
+      <div class="eyebrow">Bosh ekranga qo'yish</div>
       <ol class="steps">
-        <li><b>iPhone:</b> Safari'da ochib, pastdagi <b>Ulashish</b> tugmasi → <b>Bosh ekranga qo'shish</b> (Add to Home Screen).</li>
-        <li><b>Android:</b> Chrome'da ⋮ menyu → <b>Bosh ekranga qo'shish</b> yoki <b>Ilovani o'rnatish</b>.</li>
-        <li>Shundan keyin MisterTred belgisi boshqa ilovalar qatorida turadi.</li>
+        <li><b>iPhone:</b> Safari → <b>Ulashish</b> → <b>Bosh ekranga qo'shish</b>.</li>
+        <li><b>Android:</b> Chrome → ⋮ → <b>Ilovani o'rnatish</b>.</li>
       </ol>
     </div>
-    <div class="card">
-      <div class="eyebrow">Muhim</div>
-      <p class="small" style="margin:0">Bu ilova tahlil va signal beradi, savdoni o'zi ochmaydi. Savdoni Binance ilovasida o'zingiz ochasiz: kirish, stop-loss va take-profit narxlari tahlilda yoziladi.</p>
-      <p class="small" style="margin:0">Hech bir tahlil 100% to'g'ri emas. Har doim stop-loss qo'ying va balansning 1–2% idan ko'p risk qilmang.</p>
-    </div>
+    <p class="disclaimer">Ilova tahlil va signal beradi, savdoni o'zi ochmaydi. Hech bir tahlil 100% to'g'ri emas — har doim stop-loss qo'ying.</p>
   </section>
 </main>
 <button type="button" class="toast" id="toast" hidden></button>
+<div class="sheet" id="sheet" hidden role="dialog" aria-modal="true" aria-label="Professional tahlil"><div class="sheet-bg" id="sheetBg"></div><div class="sheet-in"><div class="grab"></div><div class="sheet-top"><b>⚡ Professional tahlil</b><button type="button" class="icon-btn" id="sheetX" aria-label="Yopish">✕</button></div><div id="sheetBody"></div></div></div>
 
 <nav class="tabbar" aria-label="Bo'limlar"><div class="tabbar-in" role="tablist">
   <button role="tab" data-tab="tahlil" aria-selected="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 19V9M10 19V5M16 19v-7M22 19H2"/></svg>Tahlil</button>
@@ -291,6 +382,7 @@ ol.steps { margin: 0; padding-left: 20px; display: grid; gap: 6px; font-size: 14
   <button role="tab" data-tab="sozlama" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12M20 18h0"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></svg>Sozlama</button>
 </div></nav>
 
+<script src="vendor/lightweight-charts.standalone.production.js"></script>
 <script>
 /* MisterTred Pro — strategiya yadrosi (Python botdagi bot/strategy.py va bot/backtest.py ning aniq nusxasi). */
 (function (root) {
@@ -845,7 +937,7 @@ ol.steps { margin: 0; padding-left: 20px; display: grid; gap: 6px; font-size: 14
           bt.days = Math.max(1, Math.round(x.P.n * C.TF_SECONDS[tf] / 86400));
         }
         var prevMtf = silent && lastView && lastView.v.symbol === set.sym ? lastView.mtf : null;
-        lastView = { v: x.v, P: x.P, set: set, bt: bt, mtf: prevMtf };
+        lastView = { v: x.v, P: x.P, H: x.H, set: set, bt: bt, mtf: prevMtf };
         render(lastView);
         store.set("last", raw);
         loadMtf(set.src, set.sym, my);
@@ -905,8 +997,7 @@ ol.steps { margin: 0; padding-left: 20px; display: grid; gap: 6px; font-size: 14
     });
     if (den) {
       var t = num / den, word = t >= 0.4 ? ["buy", "Kuchli BUY tomon"] : t >= 0.15 ? ["buy", "BUY tomonga moyil"] : t <= -0.4 ? ["sell", "Kuchli SELL tomon"] : t <= -0.15 ? ["sell", "SELL tomonga moyil"] : ["flat", "Taymfreymlar bir-biriga qarshi — aniq yo'nalish yo'q"];
-      h += '<div class="consensus"><span>Umumiy xulosa</span><span class="pill ' + word[0] + '">' + word[1] + "</span></div>";
-      h += '<div class="note">Kichik va katta taymfreymlar bir tomonni ko\'rsatsa, signal ishonchliroq. Qatorni bossangiz, shu taymfreym tahlili ochiladi.</div>';
+      h += '<div class="consensus"><span>Xulosa</span><span class="pill ' + word[0] + '">' + word[1] + "</span></div>";
     }
     box.innerHTML = h;
   }
@@ -928,6 +1019,12 @@ ol.steps { margin: 0; padding-left: 20px; display: grid; gap: 6px; font-size: 14
   }
   function render(L) {
     var v = L.v, sig = v.signal, vd = VERD[v.verdict], h = "";
+    h += '<div class="card chart-card" id="chartCard"><div class="chart-bar"><div class="chart-title"><b>' + esc(v.symbol) + "</b> · " + C.TF_LABEL[v.tf] +
+      ' <span class="live" id="liveDot" title="jonli narx"></span></div>' +
+      '<button type="button" class="icon-btn" id="fsBtn" aria-label="To\'liq ekran">⤢</button>' +
+      '<button type="button" class="btn sm pro-btn" id="proBtn">⚡ Tahlil qil</button></div>' +
+      '<div class="lwc-wrap"><div class="ohlc mono" id="ohlc"></div>' + (window.LightweightCharts ? '<div class="lwc" id="lwc"></div>' : '<canvas class="chart" id="chart" role="img" aria-label="Narx grafigi"></canvas>') + "</div>" +
+      '<div class="legend"><span style="--c:var(--accent)">EMA20</span><span style="--c:var(--muted)">EMA50</span><span style="--c:var(--wait)">EMA200</span><span style="--c:var(--line)">S/R darajalar</span></div></div>';
     h += '<div class="card verdict"><div class="v-head"><div><div class="v-sym">' + esc(v.symbol) + '</div><div class="small muted">' + C.TF_LABEL[v.tf] + " · " + esc(L.set.src.name) + " · " + hm(v.bar_time) + ' shamcha · <span id="nextUpd"></span></div></div>' +
       '<div class="v-price">' + P(v.price) + "</div></div>";
     h += '<div class="v-band ' + vd[0] + '"><div class="v-word">' + vd[1] + '</div><div class="v-sub">' + vd[2] + "</div>" +
@@ -948,84 +1045,97 @@ ol.steps { margin: 0; padding-left: 20px; display: grid; gap: 6px; font-size: 14
     }
     h += "</div>";
 
-    h += '<div class="card"><div class="row" style="justify-content:space-between"><div class="eyebrow">Grafik · ' + C.TF_LABEL[v.tf] + '</div>' +
-      '<div class="legend"><span style="--c:var(--accent)">EMA20</span><span style="--c:var(--muted)">EMA50</span><span style="--c:var(--wait)">EMA200</span></div></div><canvas class="chart" id="chart" role="img" aria-label="Narx grafigi"></canvas>' +
-      '<div class="small muted">Grafik ustida barmoqni yuritsangiz, shamcha narxlari ko\'rinadi.</div></div>';
+    h += '<div class="actions"><button class="btn ghost sm" id="addWatch">＋ Kuzatuv</button>' +
+      (sig ? '<button class="btn sm" id="trackSig">Signalni kuzatish</button>' : "") +
+      '<button class="btn ghost sm" id="reAn" aria-label="Yangilash">↻ Yangilash</button></div>';
     h += '<div class="card" id="mtf"></div>';
+    h += '<div class="group-title">Batafsil</div><div class="card group">';
 
     var pr = v.prob;
-    h += '<div class="card prob"><div class="eyebrow">O\'sish ehtimoli · keyingi ' + human(v.horizon_sec) + "</div>";
+    var probVal = pr && pr.p_up !== null && pr.p_up !== undefined ? Math.round(pr.p_up * 100) + "% o'sish" : "—", fb = "";
     if (pr && pr.p_up !== null && pr.p_up !== undefined) {
       var up = Math.round(pr.p_up * 100);
-      h += '<div class="pbar"><div class="u" style="width:' + Math.max(up, 12) + '%">' + up + '%</div><div class="d">' + (100 - up) + "%</div></div>" +
+      fb += '<div class="pbar"><div class="u" style="width:' + Math.max(up, 12) + '%">' + up + '%</div><div class="d">' + (100 - up) + "%</div></div>" +
         '<div class="note">Shu juft tarixida hozirgidek holat (' + C.BUCKET_UZ[String(pr.bucket)] + ") " + pr.cases + " marta bo'lgan; odatda narx " + Math.round(pr.base * 100) +
         "% hollarda o'sadi. O'rtacha harakat ±" + (pr.avg_move * 100).toFixed(2) + "%.</div>";
-      if (Math.abs(pr.p_up - 0.5) < 0.06) h += '<div class="note">Bu deyarli 50/50: qisqa muddatda yo\'nalishni hech kim aniq bilolmaydi. Foyda to\'g\'ri kirish nuqtasi, stop-loss va 1:2 nisbatdan keladi.</div>';
-    } else h += '<div class="note">Tarixiy ma\'lumot yetarli emas.</div>';
-    h += "</div>";
+      if (Math.abs(pr.p_up - 0.5) < 0.06) fb += '<div class="note">Bu deyarli 50/50: qisqa muddatda yo\'nalishni hech kim aniq bilolmaydi. Foyda to\'g\'ri kirish nuqtasi, stop-loss va 1:2 nisbatdan keladi.</div>';
+    } else fb += '<div class="note">Tarixiy ma\'lumot yetarli emas.</div>';
+    h += fold("prob", "O'sish ehtimoli · " + human(v.horizon_sec), probVal, fb);
 
-    h += '<div class="card"><div class="eyebrow">Trend</div>';
+    fb = "";
     v.bias.forEach(function (b) {
       var val = b[1], w = Math.abs(val) / 5 * 50, col = val > 0 ? "var(--buy)" : "var(--sell)";
       var pos = val >= 0 ? "left:50%;width:" + w + "%" : "right:50%;width:" + w + "%";
       var tag = val >= 3 ? ["up", "o'suvchi"] : val >= 1 ? ["up", "biroz o'suvchi"] : val <= -3 ? ["dn", "tushuvchi"] : val <= -1 ? ["dn", "biroz tushuvchi"] : ["fl", "yonlama"];
-      h += '<div class="trend-row"><span class="mono">' + C.TF_LABEL[b[0]] + '</span><div class="meter"><i style="' + pos + ";background:" + col + '"></i></div><span class="tag ' + tag[0] + '">' + tag[1] + "</span></div>";
+      fb += '<div class="trend-row"><span class="mono">' + C.TF_LABEL[b[0]] + '</span><div class="meter"><i style="' + pos + ";background:" + col + '"></i></div><span class="tag ' + tag[0] + '">' + tag[1] + "</span></div>";
     });
     var adxW = v.adx >= 25 ? "kuchli trend" : v.adx >= 20 ? "o'rtacha" : "kuchsiz / yonlama";
-    h += '<div class="small muted">RSI <span class="mono">' + v.rsi.toFixed(0) + '</span> · ADX <span class="mono">' + v.adx.toFixed(0) + "</span> (" + adxW + ")</div></div>";
+    fb += '<div class="small muted">RSI <span class="mono">' + v.rsi.toFixed(0) + '</span> · ADX <span class="mono">' + v.adx.toFixed(0) + "</span> (" + adxW + ")</div>";
+    h += fold("trend", "Trend", "ADX " + v.adx.toFixed(0), fb);
 
     if (v.resistance.length || v.support.length) {
-      h += '<div class="card"><div class="eyebrow">Darajalar (' + C.TF_LABEL[L.set.htf] + ')</div><div class="kv">' +
+      h += fold("lvl", "Darajalar · " + C.TF_LABEL[L.set.htf], (v.support.length + v.resistance.length) + " ta", '<div class="kv">' +
         '<div><div class="eyebrow">Qarshilik (yuqorida)</div><div class="num" style="color:var(--sell)">' + (v.resistance.map(P).join("<br>") || "—") + "</div></div>" +
-        '<div><div class="eyebrow">Qo\'llab-quvvatlash</div><div class="num" style="color:var(--buy)">' + (v.support.map(P).join("<br>") || "—") + "</div></div></div></div>";
+        '<div><div class="eyebrow">Qo\'llab-quvvatlash</div><div class="num" style="color:var(--buy)">' + (v.support.map(P).join("<br>") || "—") + "</div></div></div>");
     }
 
     var f = v.focus;
     if (f && f.required.length && f.required[0].key !== "data") {
-      h += '<div class="card"><div class="eyebrow">' + f.side + " uchun tekshiruv</div><ul class=\"list\">";
+      var okN = f.required.filter(function (c) { return c.ok; }).length;
+      fb = '<ul class="list">';
       f.required.forEach(function (c) {
         if ((c.key === "spike" || c.key === "sl" || c.key === "spread") && c.ok) return;
-        h += '<li><span class="' + (c.ok ? "ok-i" : "no-i") + '">' + (c.ok ? "✓" : "✗") + "</span><span>" + esc(c.text) + "</span></li>";
+        fb += '<li><span class="' + (c.ok ? "ok-i" : "no-i") + '">' + (c.ok ? "✓" : "✗") + "</span><span>" + esc(c.text) + "</span></li>";
       });
-      f.confirms.forEach(function (c) { h += '<li><span class="' + (c.ok ? "ok-i" : "na-i") + '">' + (c.ok ? "✓" : "·") + "</span><span>" + esc(c.text) + "</span></li>"; });
-      h += "</ul></div>";
+      f.confirms.forEach(function (c) { fb += '<li><span class="' + (c.ok ? "ok-i" : "na-i") + '">' + (c.ok ? "✓" : "·") + "</span><span>" + esc(c.text) + "</span></li>"; });
+      fb += "</ul>";
+      h += fold("check", f.side + " uchun tekshiruv", okN + "/" + f.required.length + " shart", fb);
     }
 
     var bt = L.bt;
     if (bt) {
-      h += '<div class="card"><div class="eyebrow">Shu strategiyaning ' + esc(v.symbol) + " dagi tarixi · " + C.TF_LABEL[v.tf] + ", so'nggi " + bt.days + " kun</div>";
-      if (bt.n < 5) h += '<div class="note">Signallar juda kam (' + bt.n + ") — statistika yetarli emas.</div>";
+      fb = '<div class="small muted">' + esc(v.symbol) + " · " + C.TF_LABEL[v.tf] + ", so'nggi " + bt.days + " kun</div>";
+      if (bt.n < 5) fb += '<div class="note">Signallar juda kam (' + bt.n + ") — statistika yetarli emas.</div>";
       else {
         var good = bt.total_r > 0 && bt.pf > 1.1;
-        h += '<div class="kv"><div><div class="eyebrow">Signallar</div><div class="num">' + bt.n + '</div><div class="small muted">TP ' + bt.tp + " · SL " + bt.sl + " · zararsiz " + bt.be + "</div></div>" +
+        fb += '<div class="kv"><div><div class="eyebrow">Signallar</div><div class="num">' + bt.n + '</div><div class="small muted">TP ' + bt.tp + " · SL " + bt.sl + " · zararsiz " + bt.be + "</div></div>" +
           '<div><div class="eyebrow">Aniqlik</div><div class="num">' + (bt.hit_rate === null ? "—" : Math.round(bt.hit_rate * 100) + "%") + '</div><div class="small muted">TP / (TP + SL)</div></div>' +
           '<div><div class="eyebrow">Foyda omili</div><div class="num">' + (bt.pf === Infinity ? "∞" : bt.pf === null ? "—" : bt.pf.toFixed(2)) + '</div><div class="small muted">1 dan katta — foyda</div></div>' +
           '<div><div class="eyebrow">Jami</div><div class="num" style="color:' + (bt.total_r >= 0 ? "var(--buy)" : "var(--sell)") + '">' + (bt.total_r >= 0 ? "+" : "") + bt.total_r.toFixed(1) + 'R</div><div class="small muted">' + (good ? "foydali" : "zaif") + "</div></div>" +
           '<div><div class="eyebrow">Eng katta pasayish</div><div class="num">−' + bt.max_dd_r.toFixed(1) + 'R</div><div class="small muted">ketma-ket zararlar</div></div>' +
           '<div><div class="eyebrow">Balans o\'zgarishi</div><div class="num" style="color:' + (bt.return_pct >= 0 ? "var(--buy)" : "var(--sell)") + '">' + (bt.return_pct >= 0 ? "+" : "") + bt.return_pct.toFixed(1) + '%</div><div class="small muted">har savdoda ' + S.risk + "% risk</div></div></div>";
-        h += equitySvg(bt.trades);
+        fb += equitySvg(bt.trades);
         var last = bt.trades.slice(-5).reverse();
-        h += '<div class="eyebrow">Oxirgi signallar</div><ul class="list">' + last.map(function (t) {
+        fb += '<div class="eyebrow">Oxirgi signallar</div><ul class="list">' + last.map(function (t) {
           var d = new Date(t.entry_time);
           return '<li><span class="' + (t.r > 0 ? "ok-i" : t.r < 0 ? "no-i" : "na-i") + '">' + (t.r > 0 ? "✓" : t.r < 0 ? "✗" : "·") + '</span><span class="mono small">' + d.getDate() + "." + (d.getMonth() + 1) + " " + hm(t.entry_time) + " " + t.side +
             " · " + P(t.entry) + " → " + P(t.exit) + " · " + (t.r >= 0 ? "+" : "") + t.r.toFixed(2) + "R (" + t.reason + ")</span></li>";
         }).join("") + "</ul>";
       }
-      h += "</div>";
+      h += fold("bt", "Strategiya tarixi", bt.n < 5 ? bt.n + " signal" : (bt.total_r >= 0 ? "+" : "") + bt.total_r.toFixed(1) + "R", fb);
     }
-
-    h += '<div class="row"><button class="btn ghost sm" id="addWatch">Kuzatuvga qo\'shish</button>' +
-      (sig ? '<button class="btn sm" id="trackSig">Signalni kuzatish</button>' : "") +
-      '<button class="btn ghost sm" id="reAn">Yangilash</button></div>';
-    h += '<div class="warnbox">100% kafolat yo\'q. Har doim stop-loss bilan, balansning 1–2% idan ko\'p bo\'lmagan risk bilan savdo qiling.</div>';
+    h += "</div>";
+    h += '<p class="disclaimer">100% kafolat yo\'q. Har doim stop-loss qo\'ying va balansning 1–2% idan ko\'p risk qilmang.</p>';
+    var keepRange = lw && lw.sym === v.symbol && lw.tf === v.tf ? lw.chart.timeScale().getVisibleLogicalRange() : null;
+    destroyChart();
     $("#result").innerHTML = h;
-    drawChart(L);
+    if (window.LightweightCharts) buildChart(L, keepRange); else { drawChart(L); bindChart(); }
     renderMtf(L.mtf);
-    bindChart();
+    $("#proBtn").onclick = function () { openPro(L); };
+    $("#fsBtn").onclick = function () { toggleFs(); };
     var aw = $("#addWatch"); if (aw) aw.onclick = function () { addWatch(v.symbol); aw.textContent = "Qo'shildi ✓"; aw.disabled = true; };
     var ts = $("#trackSig"); if (ts) ts.onclick = function () { trackSignal(v.symbol, v.tf, sig); ts.textContent = "Kuzatilmoqda ✓"; ts.disabled = true; };
     $("#reAn").onclick = function () { analyze(v.symbol, v.tf); };
   }
+  var folds = store.get("folds", {});
+  function fold(key, title, value, body) {
+    return '<details class="fold" data-fold="' + key + '"' + (folds[key] ? " open" : "") + '><summary><span>' + esc(title) + '</span><span class="fold-v">' + esc(value) + "</span></summary>" +
+      '<div class="fold-b">' + body + "</div></details>";
+  }
+  document.addEventListener("toggle", function (e) {
+    var d = e.target; if (!d.matches || !d.matches("details[data-fold]")) return;
+    folds[d.getAttribute("data-fold")] = d.open; store.set("folds", folds);
+  }, true);
   function equitySvg(trades) {
     if (!trades || trades.length < 2) return "";
     var pts = [0], eq = 0;
@@ -1036,6 +1146,312 @@ ol.steps { margin: 0; padding-left: 20px; display: grid; gap: 6px; font-size: 14
     return '<svg class="equity" viewBox="0 0 ' + W + " " + H + '" preserveAspectRatio="none" role="img" aria-label="Natija egri chizig\'i: ' + (eq >= 0 ? "+" : "") + eq.toFixed(1) + 'R">' +
       '<line x1="0" x2="' + W + '" y1="' + zy + '" y2="' + zy + '" stroke="var(--line)" stroke-dasharray="3 3" vector-effect="non-scaling-stroke"/>' +
       '<polyline points="' + xy + '" fill="none" stroke="' + col + '" stroke-width="2" vector-effect="non-scaling-stroke" stroke-linejoin="round"/></svg>';
+  }
+
+  // ================================================================== PROFESSIONAL GRAFIK (TradingView Lightweight Charts)
+  // MT5 uslubi: shamchalar, hajm, EMA20/50/200, S/R darajalar, signal chiziqlari, tarixiy signal belgilari,
+  // barmoq bilan surish va kattalashtirish, jonli (shakllanayotgan) sham.
+  var lw = null, liveTimer = null, TZ = -new Date().getTimezoneOffset() * 60;
+  function tsec(ms) { return Math.floor(ms / 1000) + TZ; }
+  function precision(x) { var a = Math.abs(x); return a >= 1000 ? 2 : a >= 10 ? 3 : a >= 1 ? 4 : a >= 0.01 ? 5 : 8; }
+  function chartTheme() {
+    return {
+      layout: { background: { type: "solid", color: css("--surface") }, textColor: css("--muted"), fontFamily: css("--f-body"), fontSize: 11 },
+      grid: { vertLines: { color: css("--chart-grid") }, horzLines: { color: css("--chart-grid") } },
+      rightPriceScale: { borderColor: css("--line") }, timeScale: { borderColor: css("--line") }
+    };
+  }
+  function destroyChart() {
+    if (liveTimer) { clearInterval(liveTimer); liveTimer = null; }
+    if (lw) { try { lw.chart.remove(); } catch (e) { /* allaqachon yo'q */ } lw = null; }
+  }
+  function buildChart(L, keepRange) {
+    var box = $("#lwc"); if (!box) return;
+    var Pp = L.P, v = L.v, LC = window.LightweightCharts, dec = precision(v.price);
+    var chart = LC.createChart(box, Object.assign({
+      autoSize: true,
+      crosshair: { mode: LC.CrosshairMode.Normal },
+      timeScale: { timeVisible: C.TF_SECONDS[v.tf] < 86400, secondsVisible: false, rightOffset: 6, barSpacing: 7, borderColor: css("--line") },
+      handleScale: { axisPressedMouseMove: true, pinch: true, mouseWheel: true },
+      handleScroll: { horzTouchDrag: true, vertTouchDrag: false, mouseWheel: true, pressedMouseMove: true },
+      localization: { priceFormatter: function (p) { return P(p); } }
+    }, chartTheme()));
+    var up = css("--buy"), dn = css("--sell");
+    var candle = chart.addCandlestickSeries({ upColor: up, downColor: dn, wickUpColor: up, wickDownColor: dn, borderVisible: false,
+      priceFormat: { type: "price", precision: dec, minMove: Math.pow(10, -dec) } });
+    candle.priceScale().applyOptions({ scaleMargins: { top: 0.08, bottom: 0.22 } });
+    var vol = chart.addHistogramSeries({ priceFormat: { type: "volume" }, priceScaleId: "", lastValueVisible: false, priceLineVisible: false });
+    vol.priceScale().applyOptions({ scaleMargins: { top: 0.82, bottom: 0 } });
+    var cd = [], vd = [], i;
+    for (i = 0; i < Pp.n; i++) {
+      var t = tsec(Pp.t[i]);
+      cd.push({ time: t, open: Pp.o[i], high: Pp.h[i], low: Pp.l[i], close: Pp.c[i] });
+      vd.push({ time: t, value: Pp.v[i], color: Pp.c[i] >= Pp.o[i] ? hexA(up, 0.35) : hexA(dn, 0.35) });
+    }
+    candle.setData(cd); vol.setData(vd);
+    function lineSeries(arr, color, width) {
+      var s = chart.addLineSeries({ color: color, lineWidth: width, priceLineVisible: false, lastValueVisible: false, crosshairMarkerVisible: false });
+      var d = []; for (var q = 0; q < Pp.n; q++) if (arr[q] === arr[q]) d.push({ time: tsec(Pp.t[q]), value: arr[q] });
+      s.setData(d); return s;
+    }
+    lineSeries(Pp.ema200, css("--wait"), 1); lineSeries(Pp.ema50, css("--muted"), 1); lineSeries(Pp.ema20, css("--accent"), 2);
+    var lines = [];
+    function pline(price, color, title, style) {
+      lines.push(candle.createPriceLine({ price: price, color: color, lineWidth: 1, lineStyle: style === undefined ? LC.LineStyle.Dashed : style, axisLabelVisible: true, title: title }));
+    }
+    v.resistance.filter(function (x) { return x > v.price; }).forEach(function (x, k) { pline(x, css("--muted"), "R" + (k + 1), LC.LineStyle.Dotted); });
+    v.support.filter(function (x) { return x < v.price; }).forEach(function (x, k) { pline(x, css("--muted"), "S" + (k + 1), LC.LineStyle.Dotted); });
+    if (v.signal) { pline(v.signal.entry, css("--accent"), "Kirish", LC.LineStyle.Solid); pline(v.signal.sl, dn, "SL"); pline(v.signal.tp, up, "TP"); }
+    var zoneN = lines.length;
+    if (!v.signal && v.plan) { pline(v.plan.zone[0], css("--wait"), "Zona"); pline(v.plan.zone[1], css("--wait"), ""); }
+    var zoneLines = lines.slice(zoneN);
+    // Strategiyaning tarixdagi signallari: ↑ BUY / ↓ SELL, yashil — foyda, qizil — zarar
+    var mk = [];
+    if (L.bt && L.bt.trades) L.bt.trades.slice(-40).forEach(function (tr) {
+      var b = tr.side === "BUY", win = tr.r > 0;
+      mk.push({ time: tsec(tr.entry_time), position: b ? "belowBar" : "aboveBar", shape: b ? "arrowUp" : "arrowDown", color: win ? up : dn, text: (tr.r >= 0 ? "+" : "") + tr.r.toFixed(1) + "R" });
+    });
+    if (v.signal) mk.push({ time: tsec(Pp.t[Pp.n - 1]), position: v.signal.side === "BUY" ? "belowBar" : "aboveBar", shape: v.signal.side === "BUY" ? "arrowUp" : "arrowDown", color: css("--accent"), text: v.signal.side });
+    mk.sort(function (a, b) { return a.time - b.time; });
+    candle.setMarkers(mk);
+    if (keepRange) chart.timeScale().setVisibleLogicalRange(keepRange);
+    else chart.timeScale().setVisibleLogicalRange({ from: Math.max(0, Pp.n - 110), to: Pp.n + 5 });
+    // MT5 kabi: kursor ostidagi sham narxlari
+    var ohlc = $("#ohlc");
+    function showOhlc(d) {
+      if (!d) return;
+      var chg = d.open ? (d.close / d.open - 1) * 100 : 0;
+      ohlc.innerHTML = "O <b>" + P(d.open) + "</b> H <b>" + P(d.high) + "</b> L <b>" + P(d.low) + "</b> C <b>" + P(d.close) + '</b> <span style="color:' + (chg >= 0 ? up : dn) + '">' + (chg >= 0 ? "+" : "") + chg.toFixed(2) + "%</span>";
+    }
+    showOhlc(cd[cd.length - 1]);
+    chart.subscribeCrosshairMove(function (prm) { var d = prm && prm.seriesData ? prm.seriesData.get(candle) : null; showOhlc(d || lw && lw.lastBar || cd[cd.length - 1]); });
+    lw = { chart: chart, candle: candle, vol: vol, lines: lines, zoneLines: zoneLines, planLines: [], sym: v.symbol, tf: v.tf, src: L.set.src, lastBar: cd[cd.length - 1], showOhlc: showOhlc };
+    startLive(L);
+  }
+  function hexA(col, a) {
+    var m = /^#([0-9a-f]{6})$/i.exec(col);
+    if (m) { var n = parseInt(m[1], 16); return "rgba(" + (n >> 16) + "," + (n >> 8 & 255) + "," + (n & 255) + "," + a + ")"; }
+    return col;
+  }
+  // Jonli narx: har 4 soniyada shakllanayotgan sham yangilanadi (MT5 dagidek)
+  function startLive(L) {
+    if (liveTimer) clearInterval(liveTimer);
+    var my = lw, busy = false;
+    function tick() {
+      if (busy || lw !== my || document.visibilityState !== "visible" || $("#tab-tahlil").hidden) return;
+      busy = true;
+      klines(my.src, my.sym, my.tf, 2, { forming: true }).then(function (rows) {
+        if (lw !== my || !rows.length) return;
+        var r = rows[rows.length - 1], t = tsec(r[0]), bar = { time: t, open: r[1], high: r[2], low: r[3], close: r[4] };
+        if (t < my.lastBar.time || !(r[4] > 0) || Math.abs(r[4] / my.lastBar.close - 1) > 0.25) return; // eski yoki shubhali ma'lumot
+        my.candle.update(bar);
+        my.vol.update({ time: t, value: r[5], color: r[4] >= r[1] ? hexA(css("--buy"), 0.35) : hexA(css("--sell"), 0.35) });
+        my.lastBar = bar; my.showOhlc(bar);
+        var pe = $(".v-price"); if (pe) pe.textContent = P(r[4]);
+        var ld = $("#liveDot"); if (ld) { ld.classList.add("on"); }
+      }, function () { var ld = $("#liveDot"); if (ld) ld.classList.remove("on"); }).finally(function () { busy = false; });
+    }
+    liveTimer = setInterval(tick, 4000); setTimeout(tick, 800);
+  }
+  function toggleFs(force) {
+    var c = $("#chartCard"); if (!c) return;
+    var on = force === undefined ? !c.classList.contains("fs") : force;
+    c.classList.toggle("fs", on); document.body.classList.toggle("no-scroll", on);
+    $("#fsBtn").textContent = on ? "✕" : "⤢";
+    if (!lw && lastView) drawChart(lastView);
+  }
+  function rethemeChart() { if (lw) lw.chart.applyOptions(chartTheme()); }
+  // Tahlil chizmalari: reja (kirish/SL/TP) chartga qo'yiladi
+  function drawPlan(R) {
+    if (!lw || !window.LightweightCharts) return;
+    var LS = window.LightweightCharts.LineStyle;
+    lw.planLines.forEach(function (l) { try { lw.candle.removePriceLine(l); } catch (e) { /* yo'q */ } });
+    lw.planLines = [];
+    if (!R.plan) return;
+    lw.zoneLines.forEach(function (l) { try { lw.candle.removePriceLine(l); } catch (e) { /* yo'q */ } });
+    lw.zoneLines = [];
+    var p = R.plan, add = function (price, col, t, st) { if (price) lw.planLines.push(lw.candle.createPriceLine({ price: price, color: col, lineWidth: 2, lineStyle: st, axisLabelVisible: true, title: t })); };
+    if (p.zone) { add(p.zone[0], css("--accent"), "⚡ Kirish", LS.Solid); if (p.zone[1] !== p.zone[0]) add(p.zone[1], css("--accent"), "", LS.Solid); }
+    add(p.sl, css("--sell"), "⚡ SL", LS.Solid); add(p.tp1, css("--buy"), "⚡ TP1", LS.Dashed); add(p.tp2, css("--buy"), "⚡ TP2", LS.Solid);
+  }
+
+  // ================================================================== PROFESSIONAL TAHLIL (bir tugmada to'liq xulosa)
+  function swings(Pp, n) {
+    var hs = [], ls = [];
+    for (var i = Pp.n - 4; i >= 0 && (hs.length < n || ls.length < n); i--) {
+      if (Pp.ph[i] && hs.length < n) hs.push({ i: i, p: Pp.h[i] });
+      if (Pp.pl[i] && ls.length < n) ls.push({ i: i, p: Pp.l[i] });
+    }
+    return { hs: hs, ls: ls };
+  }
+  function structure(Pp) {
+    var s = swings(Pp, 2), h = s.hs, l = s.ls;
+    if (h.length < 2 || l.length < 2) return { kind: "NONE" };
+    var hh = h[0].p > h[1].p, hl = l[0].p > l[1].p, c = Pp.c[Pp.n - 1];
+    return { kind: hh && hl ? "UP" : !hh && !hl ? "DOWN" : "RANGE", hh: hh, hl: hl, lastH: h[0].p, lastL: l[0].p, bos: c > h[0].p ? "UP" : c < l[0].p ? "DOWN" : null };
+  }
+  function divergence(Pp) {
+    var s = swings(Pp, 2), out = null, last = Pp.n - 1;
+    if (s.ls.length === 2) { var a = s.ls[1], b = s.ls[0];
+      if (last - b.i <= 25 && b.p < a.p && Pp.rsi[b.i] > Pp.rsi[a.i] + 2) out = { side: "BUY", i: b.i, text: "Bullish divergensiya: narx yangi past nuqta qildi, RSI esa yo'q — sotuvchilar kuchsizlanmoqda" }; }
+    if (s.hs.length === 2) { var c = s.hs[1], d = s.hs[0];
+      if (last - d.i <= 25 && d.p > c.p && Pp.rsi[d.i] < Pp.rsi[c.i] - 2 && (!out || d.i > out.i)) out = { side: "SELL", i: d.i, text: "Bearish divergensiya: narx yangi cho'qqi qildi, RSI esa yo'q — xaridorlar kuchsizlanmoqda" }; }
+    return out;
+  }
+  function candlePattern(Pp) {
+    var i = Pp.n - 1; if (i < 1) return null;
+    var o = Pp.o[i], c = Pp.c[i], h = Pp.h[i], l = Pp.l[i], po = Pp.o[i - 1], pc = Pp.c[i - 1];
+    var rng = h - l || 1e-12, body = Math.abs(c - o), upw = h - Math.max(o, c), dnw = Math.min(o, c) - l;
+    if (c > o && pc < po && c >= po && o <= pc && body > Math.abs(pc - po)) return { side: "BUY", name: "Bullish engulfing", text: "Oxirgi yashil sham oldingi qizil shamni to'liq yutib yubordi — xaridorlar nazoratni oldi" };
+    if (c < o && pc > po && c <= po && o >= pc && body > Math.abs(pc - po)) return { side: "SELL", name: "Bearish engulfing", text: "Oxirgi qizil sham oldingi yashil shamni to'liq yutib yubordi — sotuvchilar nazoratni oldi" };
+    if (dnw >= 2 * body && upw <= Math.max(body, rng * 0.1) && dnw / rng >= 0.55) return { side: "BUY", name: "Pin bar (bolg'acha)", text: "Uzun pastki dum: narx pastdan qattiq rad etildi" };
+    if (upw >= 2 * body && dnw <= Math.max(body, rng * 0.1) && upw / rng >= 0.55) return { side: "SELL", name: "Pin bar (otuvchi yulduz)", text: "Uzun yuqori dum: narx yuqoridan qattiq rad etildi" };
+    if (body <= rng * 0.1) return { side: null, name: "Doji", text: "Doji: bozor ikkilanmoqda, keyingi sham yo'nalishni ko'rsatadi" };
+    if (h < Pp.h[i - 1] && l > Pp.l[i - 1]) return { side: null, name: "Inside bar", text: "Ichki sham: siqilish — yorilish tomoniga harakat kutiladi" };
+    return null;
+  }
+  function proAnalyze(L) {
+    var v0 = L.v, c = lw && lw.lastBar ? lw.lastBar.close : v0.price;
+    var v = Object.assign({}, v0, { resistance: v0.resistance.filter(function (x) { return x > c; }), support: v0.support.filter(function (x) { return x < c; }) });
+    var Pp = L.P, i = Pp.n - 1, a = v.atr || 0, rr = +S.rr || 2;
+    var st = structure(Pp), dv = divergence(Pp), cp = candlePattern(Pp), F = [];
+    function f(w, text) { F.push({ w: w, text: text }); } // w > 0 — BUY tomoni, w < 0 — SELL tomoni
+    var adxK = v.adx >= 25 ? 1.2 : v.adx < 18 ? 0.7 : 1;
+    // 1. Taymfreymlar
+    var mt = null;
+    if (L.mtf) { var num = 0, den = 0, W = { "5m": 0.5, "15m": 1, "1h": 1.5, "4h": 2, "1d": 2.5 };
+      L.mtf.forEach(function (r) { if (r.v) { num += r.v.total * W[r.tf]; den += W[r.tf]; } }); if (den) mt = num / den; }
+    f(v.total * 26 * adxK, "Joriy va katta taymfreymlar trendi: " + (v.total >= 0.25 ? "yuqoriga" : v.total <= -0.25 ? "pastga" : "aniq emas") + " (" + (v.total >= 0 ? "+" : "") + Math.round(v.total * 100) + "%)");
+    if (mt !== null) f(mt * 18, "M5–D1 umumiy xulosasi: " + (mt >= 0.15 ? "BUY tomonda" : mt <= -0.15 ? "SELL tomonda" : "taymfreymlar bir-biriga qarshi"));
+    // 2. Tuzilma
+    if (st.kind === "UP") f(12, "Bozor tuzilishi o'suvchi: yangi cho'qqi (HH) va yangi tayanch (HL) yuqoriroqda");
+    else if (st.kind === "DOWN") f(-12, "Bozor tuzilishi tushuvchi: past cho'qqi (LH) va past tub (LL)");
+    else if (st.kind === "RANGE") f(0, "Bozor tuzilishi aralash — narx diapazonda");
+    if (st.bos === "UP") f(7, "Oxirgi cho'qqi (" + P(st.lastH) + ") yuqoriga yorildi — o'sish davom etishi mumkin");
+    if (st.bos === "DOWN") f(-7, "Oxirgi tub (" + P(st.lastL) + ") pastga yorildi — tushish davom etishi mumkin");
+    // 3. Indikatorlar
+    var r = v.rsi;
+    if (r >= 70) f(-6, "RSI " + r.toFixed(0) + " — haddan tashqari sotib olingan, tuzatish (pastga) ehtimoli bor");
+    else if (r <= 30) f(6, "RSI " + r.toFixed(0) + " — haddan tashqari sotilgan, sakrash (yuqoriga) ehtimoli bor");
+    else f(r > 50 ? 4 : -4, "RSI " + r.toFixed(0) + " — " + (r > 50 ? "xaridorlar ustun" : "sotuvchilar ustun"));
+    var hNow = Pp.hist[i], hPrev = Pp.hist[i - 1];
+    if (hNow === hNow && hPrev === hPrev) f((hNow > 0 ? 3 : -3) + (hNow > hPrev ? 2 : -2), "MACD " + (hNow > 0 ? "noldan yuqorida" : "noldan pastda") + ", " + (hNow > hPrev ? "kuchaymoqda ↑" : "susaymoqda ↓"));
+    f(0, "ADX " + v.adx.toFixed(0) + " — " + (v.adx >= 25 ? "trend kuchli" : v.adx >= 20 ? "trend o'rtacha" : "trend kuchsiz, bozor yonlama"));
+    if (dv) f(dv.side === "BUY" ? 10 : -10, dv.text);
+    // 4. Sham va hajm
+    var volHi = Pp.vol_sma[i] === Pp.vol_sma[i] && Pp.v[i] > 1.5 * Pp.vol_sma[i];
+    if (cp) f(cp.side ? (cp.side === "BUY" ? 1 : -1) * (volHi ? 9 : 6) : 0, cp.text + (volHi && cp.side ? " (hajm yuqori — kuchli belgi)" : ""));
+    // 5. Statistika
+    if (v.prob && v.prob.p_up !== null) f((v.prob.p_up - 0.5) * 40, "Tarixda shunday holatdan keyin narx " + Math.round(v.prob.p_up * 100) + "% hollarda o'sgan (" + v.prob.cases + " holat)");
+    var score = F.reduce(function (s0, x) { return s0 + x.w; }, 0);
+    var side = v.signal ? v.signal.side : score >= 14 ? "BUY" : score <= -14 ? "SELL" : null, sgn = side === "BUY" ? 1 : -1;
+    // 6. Ishonch (halol: hech qachon 90% dan oshmaydi)
+    var conf;
+    if (!side) conf = Math.round(Math.max(10, 40 - Math.abs(score)));
+    else {
+      conf = 45 + Math.min(30, Math.abs(score) * 0.6);
+      if (v.signal) conf += 8 + v.signal.score * 1.5;
+      if (v.signal && sgn * score < 0) conf -= 15;
+      if (L.bt && L.bt.n >= 8) conf += L.bt.pf > 1.3 ? 4 : L.bt.pf < 1 ? -8 : 0;
+      if (dv && dv.side !== side) conf -= 8;
+      if (v.adx < 18) conf -= 6;
+      conf = Math.round(Math.max(20, Math.min(90, conf)));
+    }
+    // 7. Savdo rejasi
+    var plan = null, e20 = Pp.ema20[i];
+    if (v.signal) {
+      var sg = v.signal, risk = Math.abs(sg.entry - sg.sl);
+      plan = { type: "market", side: sg.side, zone: [sg.entry, sg.entry], sl: sg.sl, tp1: sg.entry + sgn * risk, tp2: sg.tp, risk: risk };
+    } else if (side && a > 0 && e20 === e20) {
+      var z = [e20, e20 + sgn * 0.3 * a].sort(function (x, y) { return x - y; }), ent = (z[0] + z[1]) / 2;
+      var sl = sgn > 0 ? Math.min(ent - 1.5 * a, (st.lastL || ent) - 0.2 * a) : Math.max(ent + 1.5 * a, (st.lastH || ent) + 0.2 * a);
+      if (Math.abs(ent - sl) > 3 * a) sl = ent - sgn * 1.5 * a;
+      var rk = Math.abs(ent - sl);
+      plan = { type: "limit", side: side, zone: z, sl: sl, tp1: ent + sgn * rk, tp2: ent + sgn * rr * rk, risk: rk, far: sgn * (c - ent) > 1.5 * a };
+    }
+    var upL = v.resistance[0] || (st.lastH > c ? st.lastH : null), dnL = v.support[0] || (st.lastL < c ? st.lastL : null);
+    // Qarshi to'siq: TP yo'lida daraja bormi
+    var block = null;
+    if (plan) { var lvls = plan.side === "BUY" ? v.resistance : v.support;
+      lvls.forEach(function (x) { if (!block && sgn * (x - plan.zone[1]) > 0 && sgn * (x - plan.tp2) < 0) block = x; }); }
+    F.sort(function (x, y) { return Math.abs(y.w) - Math.abs(x.w); });
+    var pros = F.filter(function (x) { return side ? sgn * x.w > 0.5 : false; }), cons = F.filter(function (x) { return side ? sgn * x.w < -0.5 : false; }), neutral = F.filter(function (x) { return !side || Math.abs(x.w) <= 0.5; });
+    return { v: v, price: c, side: side, conf: conf, score: score, plan: plan, st: st, dv: dv, cp: cp, pros: pros, cons: cons, neutral: neutral, upL: upL, dnL: dnL, block: block, volHi: volHi };
+  }
+  function lean(R) { return Math.round(50 + Math.max(-40, Math.min(40, R.score))); }
+  function confWord(c) { return c >= 75 ? "yuqori" : c >= 60 ? "o'rtacha" : c >= 45 ? "past" : "juda past"; }
+  function proSummary(L, R) {
+    var v = R.v, tf = C.TF_LABEL[v.tf], s = baseAsset(v.symbol) + " (" + tf + "): ";
+    if (!R.side) return s + "aniq yo'nalish yo'q — bozor ikkilanmoqda. Hozir savdo ochmang. " +
+      (R.upL ? "Narx " + P(R.upL) + " dan yuqorida yopilsa — BUY, " : "") + (R.dnL ? P(R.dnL) + " dan pastda yopilsa — SELL ko'rib chiqiladi." : "");
+    var p = R.plan, dir = R.side === "BUY" ? "o'sish" : "tushish";
+    if (!p) return s + "ustun yo'nalish — " + dir + ", lekin aniq kirish nuqtasi hali shakllanmagan.";
+    if (p.type === "market") return s + "kuchli " + R.side + " signal. Hozirgi narxdan " + R.side + ", stop-loss " + P(p.sl) + ", maqsad " + P(p.tp1) + " va " + P(p.tp2) + ". " +
+      (R.side === "BUY" ? "Narx " + P(p.sl) + " dan pastda yopilsa" : "Narx " + P(p.sl) + " dan yuqorida yopilsa") + " — ssenariy bekor.";
+    return s + "ustun yo'nalish — " + dir + ". Hozir quvlab kirmang: narx " + P(p.zone[0]) + "–" + P(p.zone[1]) + " zonasiga qaytib, " + tf + " shamcha " + (R.side === "BUY" ? "yuqoriga" : "pastga") +
+      " burilib yopilsa — " + R.side + ". Stop-loss " + P(p.sl) + ", maqsad " + P(p.tp1) + " / " + P(p.tp2) + ".";
+  }
+  function proHtml(L, R) {
+    var v = R.v, cls = R.side === "BUY" ? "buy" : R.side === "SELL" ? "sell" : "flat", word = R.side || "KUTING", h = "";
+    h += '<div class="pro-head ' + cls + '"><div><div class="eyebrow">' + esc(v.symbol) + " · " + C.TF_LABEL[v.tf] + " · " + hm(Date.now()) + '</div><div class="v-word">' + word + "</div></div>" +
+      (R.side ? '<div class="conf"><div class="conf-n">' + R.conf + '%</div><div class="small muted">ishonch: ' + confWord(R.conf) + "</div></div></div>" +
+        '<div class="confbar"><i class="' + cls + '" style="width:' + R.conf + '%"></i></div>'
+      : '<div class="conf"><div class="conf-n">' + lean(R) + '%</div><div class="small muted">BUY tomonga moyillik</div></div></div>' +
+        '<div class="pbar"><div class="u" style="width:' + Math.max(12, lean(R)) + '%">BUY ' + lean(R) + '%</div><div class="d">SELL ' + (100 - lean(R)) + "%</div></div>");
+    h += '<p class="pro-sum">' + esc(proSummary(L, R)) + "</p>";
+    var p = R.plan;
+    if (p) {
+      var rk = p.risk, e = (p.zone[0] + p.zone[1]) / 2;
+      h += '<div class="pro-sec"><div class="eyebrow">Savdo rejasi · ' + (p.type === "market" ? "hozir kirish" : "limit (kutish)") + '</div><div class="plan">' +
+        '<div><span>Kirish</span><b>' + (p.zone[0] === p.zone[1] ? P(p.zone[0]) : P(p.zone[0]) + " – " + P(p.zone[1])) + "</b></div>" +
+        '<div class="sl"><span>Stop-loss</span><b>' + P(p.sl) + "</b><em>" + pct(p.sl, e) + "</em></div>" +
+        '<div class="tp"><span>TP1 (1:1)</span><b>' + P(p.tp1) + "</b><em>" + pct(p.tp1, e) + "</em></div>" +
+        '<div class="tp"><span>TP2 (1:' + (Math.abs(p.tp2 - e) / rk).toFixed(1) + ")</span><b>" + P(p.tp2) + "</b><em>" + pct(p.tp2, e) + "</em></div></div>" +
+        calcLine(v.symbol, e, p.sl) +
+        '<div class="note">TP1 ga yetganda pozitsiyaning yarmini yoping va SL ni kirish narxiga o\'tkazing — qolgani TP2 gacha.</div>' +
+        (p.far ? '<div class="note" style="color:var(--wait)">Narx hozir zonadan uzoqda — kirish uchun qaytishni kuting.</div>' : "") +
+        (R.block ? '<div class="note" style="color:var(--wait)">TP2 yo\'lida ' + (p.side === "BUY" ? "qarshilik" : "qo'llab-quvvatlash") + " bor (" + P(R.block) + ") — u yerda qisman foyda oling.</div>" : "") + "</div>";
+    } else if (!R.side) {
+      h += '<div class="pro-sec"><div class="eyebrow">Nimani kutish kerak</div><ul class="list">' +
+        (R.upL ? '<li><span class="ok-i">↑</span><span>' + P(R.upL) + " dan yuqorida sham yopilsa — BUY ko'rib chiqing</span></li>" : "") +
+        (R.dnL ? '<li><span class="no-i">↓</span><span>' + P(R.dnL) + " dan pastda sham yopilsa — SELL ko'rib chiqing</span></li>" : "") + "</ul></div>";
+    }
+    function li(x, ok) {
+      if (ok === undefined && Math.abs(x.w) > 0.5) ok = x.w > 0 ? "up" : "dn";
+      if (ok === "up" || ok === "dn") return '<li><span class="' + (ok === "up" ? "ok-i" : "no-i") + '">' + (ok === "up" ? "↑" : "↓") + "</span><span>" + esc(x.text) + "</span></li>"; return '<li><span class="' + (ok === true ? "ok-i" : ok === false ? "no-i" : "na-i") + '">' + (ok === true ? "✓" : ok === false ? "✗" : "•") + "</span><span>" + esc(x.text) + "</span></li>"; }
+    if (R.side) {
+      h += '<div class="pro-sec"><div class="eyebrow">Nega ' + R.side + "?</div><ul class=\"list\">" + R.pros.slice(0, 6).map(function (x) { return li(x, true); }).join("") + "</ul></div>";
+      if (R.cons.length) h += '<div class="pro-sec"><div class="eyebrow">Xavflar (qarshi omillar)</div><ul class="list">' + R.cons.slice(0, 4).map(function (x) { return li(x, false); }).join("") + "</ul></div>";
+    }
+    if (R.neutral.length) h += '<div class="pro-sec"><div class="eyebrow">' + (R.side ? "Qo'shimcha" : "Bozor holati") + '</div><ul class="list">' + R.neutral.slice(0, 6).map(function (x) { return li(x); }).join("") + "</ul></div>";
+    var lv = [];
+    v.resistance.forEach(function (x, k) { lv.push('<div><span>R' + (k + 1) + ' · qarshilik</span><b style="color:var(--sell)">' + P(x) + "</b><em>" + pct(x, R.price) + "</em></div>"); });
+    v.support.forEach(function (x, k) { lv.push('<div><span>S' + (k + 1) + ' · tayanch</span><b style="color:var(--buy)">' + P(x) + "</b><em>" + pct(x, R.price) + "</em></div>"); });
+    if (lv.length) h += '<div class="pro-sec"><div class="eyebrow">Muhim darajalar · ' + C.TF_LABEL[L.set.htf] + '</div><div class="plan">' + lv.join("") + "</div></div>";
+    var bt = L.bt;
+    if (bt && bt.n >= 5) h += '<div class="pro-sec"><div class="eyebrow">Strategiya tarixi</div><div class="small">So\'nggi ' + bt.days + " kunda " + bt.n + " signal: aniqlik " + (bt.hit_rate === null ? "—" : Math.round(bt.hit_rate * 100) + "%") +
+      ", foyda omili " + (bt.pf === Infinity ? "∞" : bt.pf.toFixed(2)) + ", jami " + (bt.total_r >= 0 ? "+" : "") + bt.total_r.toFixed(1) + "R.</div></div>";
+    h += '<div class="actions"><button type="button" class="btn ghost sm" id="proShare">Ulashish</button><button type="button" class="btn sm" id="proClose">Chartda ko\'rish</button></div>';
+    h += '<p class="disclaimer">Bu tahlil matematik qoidalar asosida avtomatik tuziladi. Hech kim bozorni 100% bila olmaydi — har doim stop-loss qo\'ying va balansning 1–2% idan ko\'p risk qilmang.</p>';
+    return h;
+  }
+  function openPro(L) {
+    var R = proAnalyze(L), sh = $("#sheet");
+    $("#sheetBody").innerHTML = proHtml(L, R);
+    sh.hidden = false; document.body.classList.add("no-scroll");
+    requestAnimationFrame(function () { sh.classList.add("open"); });
+    drawPlan(R);
+    $("#proClose").onclick = closePro;
+    $("#proShare").onclick = function () {
+      var t = proSummary(L, R) + "\nIshonch: " + R.conf + "% — MisterTred";
+      if (navigator.share) navigator.share({ text: t }).catch(function () {});
+      else if (navigator.clipboard) navigator.clipboard.writeText(t).then(function () { $("#proShare").textContent = "Nusxa olindi ✓"; });
+    };
+  }
+  function closePro() {
+    var sh = $("#sheet"); sh.classList.remove("open"); document.body.classList.remove("no-scroll");
+    setTimeout(function () { sh.hidden = true; }, 220);
+    var c = $("#chartCard"); if (c) c.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
   var chartGeo = null, chartHover = -1;
@@ -1520,7 +1936,8 @@ ol.steps { margin: 0; padding-left: 20px; display: grid; gap: 6px; font-size: 14
     document.querySelectorAll(".tabbar button").forEach(function (b) { b.setAttribute("aria-selected", String(b.getAttribute("data-tab") === name)); });
     window.scrollTo(0, 0);
     if (name === "kuzatuv") { renderWatch(); renderJournal(); renderTgFeed(); }
-    if (name === "tahlil" && lastView) drawChart(lastView);
+    if (name === "tahlil" && lastView && !lw) drawChart(lastView);
+    if (name !== "tahlil") toggleFs(false);
   }
   function openAnalysis(sym, tf) {
     if (tf && tf !== curTf) { curTf = tf; store.set("tf", tf); segButtons($("#tfSeg"), curTf, pickTf); }
@@ -1621,7 +2038,12 @@ ol.steps { margin: 0; padding-left: 20px; display: grid; gap: 6px; font-size: 14
     f.text().then(function (t) {
       var d = JSON.parse(t);
       if (!d || d.app !== "MisterTred") throw new Error("bad");
-      BK_KEYS.forEach(function (k) { if (d[k] !== undefined) store.set(k, d[k]); });
+      var TYPES = { settings: "object", watch: "array", wstate: "object", journal: "array", tg: "object", tgfeed: "array" };
+      BK_KEYS.forEach(function (k) {
+        if (d[k] === undefined) return;
+        var want = TYPES[k], ok = !want || (want === "array" ? Array.isArray(d[k]) : d[k] && typeof d[k] === "object" && !Array.isArray(d[k]));
+        if (ok && (k !== "watch" || d[k].every(function (x) { return /^[A-Z0-9]{2,20}$/.test(x); }))) store.set(k, d[k]);
+      });
       $("#bkMsg").textContent = "Tiklandi. Ilova qayta yuklanmoqda…";
       setTimeout(function () { location.reload(); }, 600);
     }).catch(function () { $("#bkMsg").textContent = "Bu fayl MisterTred zaxira nusxasi emas."; });
@@ -1638,11 +2060,14 @@ ol.steps { margin: 0; padding-left: 20px; display: grid; gap: 6px; font-size: 14
     S.min_tasdiq = Math.round(num("#setMin", 0, 6, DEF.min_tasdiq)); S.adx_min = num("#setAdx", 10, 40, DEF.adx_min); S.theme = $("#setTheme").value;
     store.set("settings", S); applyTheme(); fillSettings();
     $("#setMsg").textContent = "Saqlandi. Keyingi tahlil yangi sozlamalar bilan bo'ladi.";
-    if (lastView) drawChart(lastView);
+    if (lastView && !lw) drawChart(lastView);
+    rethemeChart();
   };
   $("#srcRetry").onclick = function () { srcIdx = 0; store.set("src", 0); for (var k in symCache) delete symCache[k]; withSource(function (src) { return symbols(src); }).catch(function () {}); };
-  window.addEventListener("resize", function () { if (lastView && !$("#tab-tahlil").hidden) drawChart(lastView); });
-  if (window.matchMedia) window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", function () { if (lastView) drawChart(lastView); });
+  window.addEventListener("resize", function () { if (lastView && !$("#tab-tahlil").hidden && !lw) drawChart(lastView); });
+  if (window.matchMedia) window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", function () { rethemeChart(); if (lastView && !lw) drawChart(lastView); });
+  $("#sheetX").onclick = closePro; $("#sheetBg").onclick = closePro;
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") { if (!$("#sheet").hidden) closePro(); else toggleFs(false); } });
 
   // ------------------------------------------------ Telegram: interfeys
   $("#tgEvery").value = String(tg.every); $("#tgOnlySig").checked = !!tg.onlySig; $("#tgProxy").value = tg.proxy || "";
@@ -1673,6 +2098,11 @@ ol.steps { margin: 0; padding-left: 20px; display: grid; gap: 6px; font-size: 14
   document.addEventListener("visibilitychange", function () { if (document.visibilityState === "visible" && tg.chans.length) tgCheck(false); });
   renderTgChans(); renderTgFeed(); tgSchedule();
   if (tg.chans.length) setTimeout(function () { tgCheck(false); }, 1500);
+
+  var STANDALONE = navigator.standalone === true || (window.matchMedia && matchMedia("(display-mode: standalone)").matches);
+  if (STANDALONE) $("#installCard").hidden = true;
+  else if (/iPhone|iPad|iPod/.test(navigator.userAgent) && !INFRAME && !store.get("tipX", false)) $("#installTip").hidden = false;
+  $("#installX").onclick = function () { $("#installTip").hidden = true; store.set("tipX", true); };
 
   window.addEventListener("hashchange", function () { var h = decodeURIComponent((location.hash || "").slice(1)); if (h) openAnalysis(h); });
   if ("serviceWorker" in navigator && /^https?:$/.test(location.protocol) && !INFRAME) navigator.serviceWorker.register("sw.js").catch(function () { /* oflayn rejim bo'lmaydi */ });
